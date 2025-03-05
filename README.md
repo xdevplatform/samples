@@ -1,4 +1,4 @@
-# Twitter API v2 sample code [![v2](https://img.shields.io/endpoint?url=https%3A%2F%2Ftwbadges.glitch.me%2Fbadges%2Fv2)](https://developer.twitter.com/en/docs/twitter-api)
+# Twitter API v2 sample code [![v2](https://img.shields.io/badge/API-V2-black?logo=x)](https://developer.twitter.com/en/docs/twitter-api)
 
 Sample code for the Twitter API v2 endpoints.
 Individual API features have folders where you can find examples of usage in several coding languages (Java, Node.js, Python, R, and Ruby).
