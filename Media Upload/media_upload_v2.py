@@ -7,6 +7,7 @@ import time
 import requests
 from requests_oauthlib import OAuth2Session
 
+MEDIA_INIT_ENDPOINT_URL = 'https://api.x.com/2/media/upload/initialize'
 MEDIA_ENDPOINT_URL = 'https://api.x.com/2/media/upload'
 POST_TO_X_URL = 'https://api.x.com/2/tweets'
 
@@ -101,18 +102,23 @@ class VideoPost(object):
         self.media_id = None
         self.processing_info = None
 
+    def _create_append_url(self):
+        return f"https://api.x.com/2/media/upload/{self.media_id}/append"
+
+    def _create_finalize_url(self):
+        return f"https://api.x.com/2/media/upload/{self.media_id}/finalize"
+
     def upload_init(self):
         # Initializes Upload
         print('INIT')
 
         request_data = {
-            'command': 'INIT',
             'media_type': 'video/mp4',
             'total_bytes': self.total_bytes,
             'media_category': 'tweet_video'
         }
 
-        req = requests.post(url=MEDIA_ENDPOINT_URL, params=request_data, headers=headers)
+        req = requests.post(url=MEDIA_ENDPOINT_URL, json=request_data, headers=headers)
         print(req.status_code)
         print(req.text)
         media_id = req.json()['data']['id']
@@ -133,8 +139,6 @@ class VideoPost(object):
                 files = {'media': ('chunk', chunk, 'application/octet-stream')}
 
                 data = {
-                    'command': 'APPEND',
-                    'media_id': self.media_id,
                     'segment_index': segment_id
                 }
 
@@ -143,7 +147,7 @@ class VideoPost(object):
                     "User-Agent": "MediaUploadSampleCode",
                 }
 
-                req = requests.post(url=MEDIA_ENDPOINT_URL, data=data, files=files, headers=headers)
+                req = requests.post(url=self._create_append_url(), data=data, files=files, headers=headers)
 
                 if req.status_code < 200 or req.status_code > 299:
                     print(req.status_code)
@@ -162,12 +166,7 @@ class VideoPost(object):
         # Finalizes uploads and starts video processing
         print('FINALIZE')
 
-        request_data = {
-            'command': 'FINALIZE',
-            'media_id': self.media_id
-        }
-
-        req = requests.post(url=MEDIA_ENDPOINT_URL, params=request_data, headers=headers)
+        req = requests.post(url=self._create_finalize_url(), headers=headers)
 
         print(req.json())
 
