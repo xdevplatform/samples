@@ -1,23 +1,9 @@
-"""
-Filtered Stream - X API v2
-==========================
-Endpoint: GET https://api.x.com/2/tweets/search/stream
-Docs: https://developer.x.com/en/docs/twitter-api/tweets/filtered-stream/api-reference/get-tweets-search-stream
-
-Authentication: Bearer Token (App-only)
-Required env vars: BEARER_TOKEN
-
-This example demonstrates:
-1. Getting existing rules
-2. Deleting all existing rules
-3. Setting new rules
-4. Connecting to the stream
-"""
-
 import requests
 import os
 import json
 
+# To set your enviornment variables in your terminal run the following line:
+# export 'BEARER_TOKEN'='<your_bearer_token>'
 bearer_token = os.environ.get("BEARER_TOKEN")
 
 
@@ -25,6 +11,7 @@ def bearer_oauth(r):
     """
     Method required by bearer token authentication.
     """
+
     r.headers["Authorization"] = f"Bearer {bearer_token}"
     r.headers["User-Agent"] = "v2FilteredStreamPython"
     return r
@@ -63,7 +50,7 @@ def delete_all_rules(rules):
 
 
 def set_rules(delete):
-    # Adjust rules as needed
+    # You can adjust the rules if needed
     sample_rules = [
         {"value": "dog has:images", "tag": "dog pictures"},
         {"value": "cat has:images -grumpy", "tag": "cat pictures"},

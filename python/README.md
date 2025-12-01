@@ -1,139 +1,150 @@
 # X API v2 - Python Examples
 
-Working Python code samples for the X (formerly Twitter) API v2.
+Working Python examples for the X API v2.
 
 ## Setup
 
-### 1. Install Python 3.7+
-
 ```bash
-python3 --version
+pip install requests requests-oauthlib
 ```
 
-### 2. Create a virtual environment (recommended)
+## Environment Variables
 
-```bash
-python3 -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
-
-### 3. Install dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-### 4. Set environment variables
-
-For **Bearer Token** authentication (app-only):
 ```bash
 export BEARER_TOKEN='your_bearer_token'
-```
-
-For **OAuth 1.0a** authentication (user context):
-```bash
 export CONSUMER_KEY='your_consumer_key'
 export CONSUMER_SECRET='your_consumer_secret'
 ```
 
-## Examples by Category
+## Examples
 
-### Posts (Tweets)
-| File | Description | Auth |
-|------|-------------|------|
-| `posts/create_post.py` | Create a new post | OAuth 1.0a |
-| `posts/delete_post.py` | Delete a post | OAuth 1.0a |
-| `posts/lookup.py` | Look up posts by ID | Bearer |
-| `posts/search_recent.py` | Search recent posts (7 days) | Bearer |
-| `posts/search_full_archive.py` | Search all posts (Academic) | Bearer |
-| `posts/counts_recent.py` | Get post counts (7 days) | Bearer |
-| `posts/counts_full_archive.py` | Get post counts (all time) | Bearer |
-| `posts/quote_posts.py` | Get quote posts | Bearer |
-| `posts/repost.py` | Repost (retweet) | OAuth 1.0a |
-| `posts/undo_repost.py` | Undo repost | OAuth 1.0a |
-| `posts/reposted_by.py` | Users who reposted | Bearer |
-| `posts/like.py` | Like a post | OAuth 1.0a |
-| `posts/unlike.py` | Unlike a post | OAuth 1.0a |
-| `posts/liking_users.py` | Users who liked a post | Bearer |
-| `posts/liked_posts.py` | Posts liked by a user | Bearer |
+### Posts
+- posts/counts_full_archive.py
+- posts/counts_recent.py
+- posts/create_post.py
+- posts/create_tweet.py
+- posts/delete_post.py
+- posts/delete_tweet.py
+- posts/full_archive_tweet_counts.py
+- posts/full-archive-search.py
+- posts/get_tweets_with_bearer_token.py
+- posts/get_tweets_with_user_context.py
+- posts/like_a_tweet.py
+- posts/like.py
+- posts/liked_posts.py
+- posts/liked_tweets.py
+- posts/liking_users.py
+- posts/lookup.py
+- posts/quote_posts.py
+- posts/quote_tweets.py
+- posts/recent_search.py
+- posts/recent_tweet_counts.py
+- posts/repost.py
+- posts/reposted_by.py
+- posts/retweet_a_tweet.py
+- posts/retweeted_by.py
+- posts/search_full_archive.py
+- posts/search_recent.py
+- posts/undo_a_retweet.py
+- posts/undo_repost.py
+- posts/unlike_a_tweet.py
+- posts/unlike.py
 
 ### Users
-| File | Description | Auth |
-|------|-------------|------|
-| `users/lookup.py` | Look up users by username | Bearer |
-| `users/me.py` | Get authenticated user | OAuth 1.0a |
-| `users/followers.py` | Get user's followers | Bearer |
-| `users/following.py` | Get user's following | Bearer |
-| `users/block.py` | Block a user | OAuth 1.0a |
-| `users/unblock.py` | Unblock a user | OAuth 1.0a |
-| `users/blocked.py` | Get blocked users | OAuth 1.0a |
-| `users/mute.py` | Mute a user | OAuth 1.0a |
-| `users/unmute.py` | Unmute a user | OAuth 1.0a |
-| `users/muted.py` | Get muted users | OAuth 1.0a |
+- users/block_a_user.py
+- users/block.py
+- users/blocked.py
+- users/followers_lookup.py
+- users/followers.py
+- users/following_lookup.py
+- users/following.py
+- users/get_users_me_user_context.py
+- users/get_users_with_bearer_token.py
+- users/get_users_with_user_context.py
+- users/lookup_blocks.py
+- users/lookup_mutes.py
+- users/lookup.py
+- users/me.py
+- users/mute_a_user.py
+- users/mute.py
+- users/muted.py
+- users/unblock_a_user.py
+- users/unblock.py
+- users/unmute_a_user.py
+- users/unmute.py
 
 ### Timelines
-| File | Description | Auth |
-|------|-------------|------|
-| `timelines/user_posts.py` | User's posts timeline | Bearer |
-| `timelines/user_mentions.py` | User's mentions | Bearer |
-| `timelines/home_timeline.py` | Home timeline | OAuth 1.0a |
+- timelines/home_timeline.py
+- timelines/reverse-chron-home-timeline.py
+- timelines/user_mentions.py
+- timelines/user_posts.py
+- timelines/user_tweets.py
 
 ### Streams
-| File | Description | Auth |
-|------|-------------|------|
-| `streams/filtered_stream.py` | Filtered stream with rules | Bearer |
-| `streams/sampled_stream.py` | 1% sampled stream | Bearer |
-
-### Bookmarks
-| File | Description | Auth |
-|------|-------------|------|
-| `bookmarks/lookup.py` | Get bookmarks | OAuth 2.0 |
-| `bookmarks/create.py` | Create bookmark | OAuth 2.0 |
-| `bookmarks/delete.py` | Delete bookmark | OAuth 2.0 |
-
-### Spaces
-| File | Description | Auth |
-|------|-------------|------|
-| `spaces/lookup.py` | Look up Spaces | Bearer |
-| `spaces/search.py` | Search Spaces | Bearer |
+- streams/filtered_stream.py
+- streams/sampled_stream.py
+- streams/sampled-stream.py
 
 ### Lists
-| File | Description | Auth |
-|------|-------------|------|
-| `lists/lookup.py` | Look up a list | Bearer |
-| `lists/create.py` | Create a list | OAuth 1.0a |
-| `lists/delete.py` | Delete a list | OAuth 1.0a |
+- lists/add_member.py
+- lists/create_a_list.py
+- lists/create.py
+- lists/delete_a_list.py
+- lists/delete.py
+- lists/follow_list.py
+- lists/list-followers-lookup.py
+- lists/list-lookup-by-id.py
+- lists/list-member-lookup.py
+- lists/List-Tweets.py
+- lists/lookup.py
+- lists/pin_list.py
+- lists/Pinned-List.py
+- lists/remove_member.py
+- lists/unfollow_list.py
+- lists/unpin_list.py
+- lists/update_a_list.py
+- lists/user-list-followed.py
+- lists/user-list-memberships.py
+- lists/user-owned-list-lookup.py
+
+### Bookmarks
+- bookmarks/bookmarks_lookup.py
+- bookmarks/create_bookmark.py
+- bookmarks/create.py
+- bookmarks/delete_bookmark.py
+- bookmarks/delete.py
+- bookmarks/lookup.py
+
+### Spaces
+- spaces/lookup.py
+- spaces/search_spaces.py
+- spaces/search.py
+- spaces/spaces_lookup.py
 
 ### Direct Messages
-| File | Description | Auth |
-|------|-------------|------|
-| `direct_messages/lookup.py` | Get DM events | OAuth 1.0a |
-| `direct_messages/send.py` | Send a DM | OAuth 1.0a |
+- direct_messages/get_events_by_conversation.py
+- direct_messages/get_one_to_one_conversation_events.py
+- direct_messages/get_user_conversation_events.py
+- direct_messages/lookup.py
+- direct_messages/post_dm_to_conversation.py
+- direct_messages/post_group_conversation_dm.py
+- direct_messages/post_one_to_one_dm.py
+- direct_messages/send.py
 
 ### Media
-| File | Description | Auth |
-|------|-------------|------|
-| `media/upload.py` | Upload media | OAuth 1.0a |
+- media/media_upload_v2.py
+- media/upload.py
 
 ### Compliance
-| File | Description | Auth |
-|------|-------------|------|
-| `compliance/create_job.py` | Create compliance job | Bearer |
-| `compliance/get_jobs.py` | Get compliance jobs | Bearer |
+- compliance/create_compliance_job.py
+- compliance/create_job.py
+- compliance/download_compliance_results.py
+- compliance/get_compliance_job_information_by_id.py
+- compliance/get_jobs.py
+- compliance/get_list_of_compliance_jobs.py
+- compliance/upload_ids.py
 
 ### Usage
-| File | Description | Auth |
-|------|-------------|------|
-| `usage/get_usage.py` | Get API usage stats | Bearer |
+- usage/get_usage_tweets.py
+- usage/get_usage.py
 
-## Running Examples
-
-```bash
-# Make sure environment variables are set
-python posts/search_recent.py
-```
-
-## More Information
-
-- [X API Documentation](https://developer.x.com/en/docs/twitter-api)
-- [X Developer Portal](https://developer.x.com/en/portal/dashboard)
