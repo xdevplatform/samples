@@ -1,102 +1,128 @@
-# Twitter API v2 sample code [![v2](https://img.shields.io/endpoint?url=https%3A%2F%2Ftwbadges.glitch.me%2Fbadges%2Fv2)](https://developer.twitter.com/en/docs/twitter-api)
+# X API v2 Sample Code
 
-Sample code for the Twitter API v2 endpoints.
-Individual API features have folders where you can find examples of usage in several coding languages (Java, Node.js, Python, R, and Ruby).
+[![X API v2](https://img.shields.io/endpoint?url=https%3A%2F%2Ftwbadges.glitch.me%2Fbadges%2Fv2)](https://developer.x.com/en/docs/twitter-api)
 
-* [Twitter API Documentation](https://developer.twitter.com/en/docs/twitter-api/getting-started/about-twitter-api)
+Working code samples for the **X (formerly Twitter) API v2** in Python, JavaScript, Ruby, and Java.
 
-## Prerequisites
+## 📁 Repository Structure
 
-* Twitter API Essential Access ([sign up here](https://t.co/signup))
-* A Project and an App created [in the dashboard](https://developer.twitter.com/en/portal/dashboard)
-
-## Using the code samples
-
-In order to run the samples in this repository you will need to set up some environment variables. You can find your credentials and bearer token in the App inside of your Project in the [dashboard of the developer portal](https://developer.twitter.com/en/portal/projects-and-apps).
-
-For OAuth 1.0a samples, you will need to export your consumer key and secret in your terminal. Be sure to replace `<your_consumer_key>` and `<your_consumer_secret>` with your own credentials without the `< >`.
-
-```bash
-export CONSUMER_KEY='<your_consumer_key>'
-export CONSUMER_SECRET='<your_consumer_secret>'
+```
+├── python/           # Python examples (most complete)
+├── javascript/       # JavaScript (Node.js) examples
+├── ruby/             # Ruby examples
+├── java/             # Java examples
+├── llms.txt          # LLM-friendly documentation
+└── api-index.json    # Machine-readable endpoint catalog
 ```
 
-For samples which use bearer token authentication, you will need to export the bearer token. Be sure to replace  `<your_bearer_token>` with your own bearer token without the `< >`.
+## 🚀 Quick Start
+
+### 1. Get API Credentials
+
+Sign up at the [X Developer Portal](https://developer.x.com/en/portal/dashboard) and create a project/app.
+
+### 2. Set Environment Variables
 
 ```bash
-export BEARER_TOKEN='<your_bearer_token>'
+# For app-only authentication (read-only endpoints)
+export BEARER_TOKEN='your_bearer_token'
+
+# For user context authentication (actions on behalf of users)
+export CONSUMER_KEY='your_consumer_key'
+export CONSUMER_SECRET='your_consumer_secret'
 ```
 
-## Language-specific requirements
+### 3. Choose Your Language
 
-### Java environment set up
+| Language | Setup | Run Example |
+|----------|-------|-------------|
+| **Python** | `pip install -r python/requirements.txt` | `python python/posts/search_recent.py` |
+| **JavaScript** | `cd javascript && npm install` | `node javascript/posts/search_recent.js` |
+| **Ruby** | `gem install typhoeus` | `ruby ruby/posts/search_recent.rb` |
+| **Java** | Add dependencies (see java/README.md) | `javac && java SearchRecent` |
 
-If you use Homebrew, you can install a Java runtime using:
+## 📚 Available Examples
 
-```bash
-brew cask install java
-```
+### Posts (formerly Tweets)
 
-You will also need to download the relevant JAR files referenced in the individual samples in order to build and run the code. If you use an IDE, it may be able to do this automatically for you.
+| Operation | Python | JavaScript | Ruby | Java |
+|-----------|--------|------------|------|------|
+| Create Post | ✅ | ✅ | | |
+| Delete Post | ✅ | ✅ | | |
+| Lookup Posts | ✅ | ✅ | ✅ | |
+| Search Recent | ✅ | ✅ | ✅ | ✅ |
+| Search Full Archive | ✅ | | | |
+| Post Counts | ✅ | | | |
+| Quote Posts | ✅ | | | |
+| Repost | ✅ | | | |
+| Like/Unlike | ✅ | | | |
 
-### JavaScript (Node.js) environment set up
+### Users
 
-You will need to have Node.js installed to run this code. All Node.js examples use `needle` as the HTTP client, which needs to be npm installed. For OAuth with user context requests, you'll need to install the `got` and `oauth-1.0a` packages.
+| Operation | Python | JavaScript | Ruby | Java |
+|-----------|--------|------------|------|------|
+| Lookup Users | ✅ | ✅ | ✅ | ✅ |
+| Get Me | ✅ | | | |
+| Followers | ✅ | ✅ | ✅ | |
+| Following | ✅ | | | |
+| Block/Unblock | ✅ | | | |
+| Mute/Unmute | ✅ | | | |
 
-```bash
-npm install needle
-npm install got
-npm install oauth-1.0a
-```
+### Timelines
 
-### Python environment set up
+| Operation | Python | JavaScript | Ruby |
+|-----------|--------|------------|------|
+| User Posts | ✅ | ✅ | ✅ |
+| User Mentions | ✅ | | |
+| Home Timeline | ✅ | | |
 
-You will need to have Python 3 installed to run this code. The Python samples use `requests==2.24.0` which uses `requests-oauthlib==1.3.0`.
+### Streams
 
-(Optionally) It is common and recommended not to install required package globally, but locally under project subfolder using `venv`:
+| Operation | Python | JavaScript |
+|-----------|--------|------------|
+| Filtered Stream | ✅ | ✅ |
+| Sampled Stream | ✅ | |
 
-```bash
-python3 -m venv venv
-source venv/bin/activate
-```
+### Other
 
-You can install these packages as follows:
+| Category | Python | JavaScript | Ruby |
+|----------|--------|------------|------|
+| Bookmarks | ✅ | | |
+| Spaces | ✅ | ✅ | |
+| Lists | ✅ | ✅ | ✅ |
+| Direct Messages | ✅ | | |
+| Media Upload | ✅ | | |
+| Compliance | ✅ | | |
+| Usage Stats | ✅ | | |
 
-```bash
-pip install requests
-pip install requests-oauthlib
-```
+## 🔐 Authentication Types
 
-### Ruby environment set up
+| Type | Use Case | Required Env Vars |
+|------|----------|-------------------|
+| **Bearer Token** | Read-only endpoints (search, lookup) | `BEARER_TOKEN` |
+| **OAuth 1.0a** | User actions (post, like, follow) | `CONSUMER_KEY`, `CONSUMER_SECRET` |
+| **OAuth 2.0 PKCE** | Newer endpoints (bookmarks) | OAuth flow required |
 
-You will need to have Ruby (recommended: >= 2.0.0) installed in order to run the code. The Ruby examples use `typhoeus` as the HTTP client, which needs to be gem installed. For OAuth with user context requests, you'll also need to install the `oauth` gem (see below).
+## 🔗 Resources
 
-```bash
-gem install typhoeus
-gem install oauth
-```
+- [X API Documentation](https://developer.x.com/en/docs/twitter-api)
+- [Developer Portal](https://developer.x.com/en/portal/dashboard)
+- [API Reference Index](https://developer.x.com/en/docs/api-reference-index)
+- [Postman Collection](https://t.co/twitter-api-postman)
 
-## Additional resources
+## 🤖 For LLMs
 
-We maintain a [Postman](https://getpostman.com) Collection which you can use for exercising individual API endpoints.
+This repository includes:
+- **`llms.txt`** - Comprehensive context file for AI assistants
+- **`api-index.json`** - Machine-readable endpoint catalog
 
-* [Using Postman with the Twitter API](https://developer.twitter.com/en/docs/tutorials/postman-getting-started)
-* [Twitter API v2 on the Postman website](https://t.co/twitter-api-postman)
+## 🤝 Contributing
 
-## Support
+We welcome contributions! Please:
+1. Follow existing code patterns
+2. Include proper documentation headers
+3. Test your examples before submitting
 
-* For general questions related to the API and features, please use the v2 section of our [developer community forums](https://twittercommunity.com/c/twitter-api/twitter-api-v2/65).
+## 📄 License
 
-* If there's an bug or issue with the sample code itself, please create a [new issue](https://github.com/twitterdev/Twitter-API-v2-sample-code/issues) here on GitHub.
-
-## Contributing
-
-We welcome pull requests that add meaningful additions to these code samples, particularly for languages that are not yet represented here.
-
-We feel that a welcoming community is important and we ask that you follow Twitter's [Open Source Code of Conduct](https://github.com/twitter/.github/blob/main/code-of-conduct.md) in all interactions with the community.
-
-## License
-
-Copyright 2021 Twitter, Inc.
-
-Licensed under the Apache License, Version 2.0: https://www.apache.org/licenses/LICENSE-2.0
+Apache 2.0 - See [LICENSE](LICENSE)

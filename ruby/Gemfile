@@ -1,0 +1,9 @@
+# X API v2 Ruby Examples - Dependencies
+
+source 'https://rubygems.org'
+
+# HTTP client
+gem 'typhoeus', '~> 1.4'
+
+# OAuth 1.0a authentication
+gem 'oauth', '~> 1.1'

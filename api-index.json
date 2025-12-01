@@ -1,0 +1,489 @@
+{
+  "name": "X API v2 Sample Code",
+  "version": "2.0",
+  "base_url": "https://api.x.com/2",
+  "languages": ["python", "javascript", "ruby", "java"],
+  "endpoints": [
+    {
+      "name": "Create Post",
+      "path": "/tweets",
+      "method": "POST",
+      "auth": ["oauth1", "oauth2-user"],
+      "folder": "posts",
+      "files": {
+        "python": "create_post.py",
+        "javascript": "create_post.js"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/manage-tweets/api-reference/post-tweets"
+    },
+    {
+      "name": "Delete Post",
+      "path": "/tweets/:id",
+      "method": "DELETE",
+      "auth": ["oauth1", "oauth2-user"],
+      "folder": "posts",
+      "files": {
+        "python": "delete_post.py",
+        "javascript": "delete_post.js"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/manage-tweets/api-reference/delete-tweets-id"
+    },
+    {
+      "name": "Post Lookup",
+      "path": "/tweets",
+      "method": "GET",
+      "auth": ["bearer", "oauth1", "oauth2-user"],
+      "folder": "posts",
+      "files": {
+        "python": "lookup.py",
+        "javascript": "lookup.js",
+        "ruby": "lookup.rb"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/lookup/api-reference/get-tweets"
+    },
+    {
+      "name": "Recent Search",
+      "path": "/tweets/search/recent",
+      "method": "GET",
+      "auth": ["bearer", "oauth2-user"],
+      "folder": "posts",
+      "files": {
+        "python": "search_recent.py",
+        "javascript": "search_recent.js",
+        "ruby": "search_recent.rb",
+        "java": "SearchRecent.java"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent"
+    },
+    {
+      "name": "Full Archive Search",
+      "path": "/tweets/search/all",
+      "method": "GET",
+      "auth": ["bearer"],
+      "folder": "posts",
+      "files": {
+        "python": "search_full_archive.py"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-all",
+      "note": "Requires Academic Research access"
+    },
+    {
+      "name": "Recent Post Counts",
+      "path": "/tweets/counts/recent",
+      "method": "GET",
+      "auth": ["bearer"],
+      "folder": "posts",
+      "files": {
+        "python": "counts_recent.py"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/counts/api-reference/get-tweets-counts-recent"
+    },
+    {
+      "name": "Quote Posts",
+      "path": "/tweets/:id/quote_tweets",
+      "method": "GET",
+      "auth": ["bearer", "oauth2-user"],
+      "folder": "posts",
+      "files": {
+        "python": "quote_posts.py"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/quote-tweets/api-reference/get-tweets-id-quote_tweets"
+    },
+    {
+      "name": "Repost",
+      "path": "/users/:id/retweets",
+      "method": "POST",
+      "auth": ["oauth1", "oauth2-user"],
+      "folder": "posts",
+      "files": {
+        "python": "repost.py"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/retweets/api-reference/post-users-id-retweets"
+    },
+    {
+      "name": "Undo Repost",
+      "path": "/users/:id/retweets/:source_tweet_id",
+      "method": "DELETE",
+      "auth": ["oauth1", "oauth2-user"],
+      "folder": "posts",
+      "files": {
+        "python": "undo_repost.py"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/retweets/api-reference/delete-users-id-retweets-tweet_id"
+    },
+    {
+      "name": "Reposted By",
+      "path": "/tweets/:id/retweeted_by",
+      "method": "GET",
+      "auth": ["bearer", "oauth2-user"],
+      "folder": "posts",
+      "files": {
+        "python": "reposted_by.py"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/retweets/api-reference/get-tweets-id-retweeted_by"
+    },
+    {
+      "name": "Like Post",
+      "path": "/users/:id/likes",
+      "method": "POST",
+      "auth": ["oauth1", "oauth2-user"],
+      "folder": "posts",
+      "files": {
+        "python": "like.py"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/likes/api-reference/post-users-id-likes"
+    },
+    {
+      "name": "Unlike Post",
+      "path": "/users/:id/likes/:tweet_id",
+      "method": "DELETE",
+      "auth": ["oauth1", "oauth2-user"],
+      "folder": "posts",
+      "files": {
+        "python": "unlike.py"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/likes/api-reference/delete-users-id-likes-tweet_id"
+    },
+    {
+      "name": "Liking Users",
+      "path": "/tweets/:id/liking_users",
+      "method": "GET",
+      "auth": ["bearer", "oauth2-user"],
+      "folder": "posts",
+      "files": {
+        "python": "liking_users.py"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/likes/api-reference/get-tweets-id-liking_users"
+    },
+    {
+      "name": "Liked Posts",
+      "path": "/users/:id/liked_tweets",
+      "method": "GET",
+      "auth": ["bearer", "oauth2-user"],
+      "folder": "posts",
+      "files": {
+        "python": "liked_posts.py"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/likes/api-reference/get-users-id-liked_tweets"
+    },
+    {
+      "name": "User Lookup",
+      "path": "/users/by",
+      "method": "GET",
+      "auth": ["bearer", "oauth1", "oauth2-user"],
+      "folder": "users",
+      "files": {
+        "python": "lookup.py",
+        "javascript": "lookup.js",
+        "ruby": "lookup.rb",
+        "java": "Lookup.java"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/users/lookup/api-reference/get-users-by"
+    },
+    {
+      "name": "Authenticated User (Me)",
+      "path": "/users/me",
+      "method": "GET",
+      "auth": ["oauth1", "oauth2-user"],
+      "folder": "users",
+      "files": {
+        "python": "me.py"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/users/lookup/api-reference/get-users-me"
+    },
+    {
+      "name": "User Followers",
+      "path": "/users/:id/followers",
+      "method": "GET",
+      "auth": ["bearer", "oauth2-user"],
+      "folder": "users",
+      "files": {
+        "python": "followers.py",
+        "javascript": "followers.js",
+        "ruby": "followers.rb"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/users/follows/api-reference/get-users-id-followers"
+    },
+    {
+      "name": "User Following",
+      "path": "/users/:id/following",
+      "method": "GET",
+      "auth": ["bearer", "oauth2-user"],
+      "folder": "users",
+      "files": {
+        "python": "following.py"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/users/follows/api-reference/get-users-id-following"
+    },
+    {
+      "name": "Block User",
+      "path": "/users/:id/blocking",
+      "method": "POST",
+      "auth": ["oauth1", "oauth2-user"],
+      "folder": "users",
+      "files": {
+        "python": "block.py"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/users/blocks/api-reference/post-users-user_id-blocking"
+    },
+    {
+      "name": "Unblock User",
+      "path": "/users/:source_user_id/blocking/:target_user_id",
+      "method": "DELETE",
+      "auth": ["oauth1", "oauth2-user"],
+      "folder": "users",
+      "files": {
+        "python": "unblock.py"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/users/blocks/api-reference/delete-users-user_id-blocking"
+    },
+    {
+      "name": "Blocked Users",
+      "path": "/users/:id/blocking",
+      "method": "GET",
+      "auth": ["oauth1", "oauth2-user"],
+      "folder": "users",
+      "files": {
+        "python": "blocked.py"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/users/blocks/api-reference/get-users-blocking"
+    },
+    {
+      "name": "Mute User",
+      "path": "/users/:id/muting",
+      "method": "POST",
+      "auth": ["oauth1", "oauth2-user"],
+      "folder": "users",
+      "files": {
+        "python": "mute.py"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/users/mutes/api-reference/post-users-user_id-muting"
+    },
+    {
+      "name": "Unmute User",
+      "path": "/users/:source_user_id/muting/:target_user_id",
+      "method": "DELETE",
+      "auth": ["oauth1", "oauth2-user"],
+      "folder": "users",
+      "files": {
+        "python": "unmute.py"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/users/mutes/api-reference/delete-users-user_id-muting"
+    },
+    {
+      "name": "Muted Users",
+      "path": "/users/:id/muting",
+      "method": "GET",
+      "auth": ["oauth1", "oauth2-user"],
+      "folder": "users",
+      "files": {
+        "python": "muted.py"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/users/mutes/api-reference/get-users-muting"
+    },
+    {
+      "name": "User Posts Timeline",
+      "path": "/users/:id/tweets",
+      "method": "GET",
+      "auth": ["bearer", "oauth2-user"],
+      "folder": "timelines",
+      "files": {
+        "python": "user_posts.py",
+        "javascript": "user_posts.js",
+        "ruby": "user_posts.rb"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/timelines/api-reference/get-users-id-tweets"
+    },
+    {
+      "name": "User Mentions Timeline",
+      "path": "/users/:id/mentions",
+      "method": "GET",
+      "auth": ["bearer", "oauth2-user"],
+      "folder": "timelines",
+      "files": {
+        "python": "user_mentions.py"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/timelines/api-reference/get-users-id-mentions"
+    },
+    {
+      "name": "Home Timeline",
+      "path": "/users/:id/reverse_chronological_timeline",
+      "method": "GET",
+      "auth": ["oauth1", "oauth2-user"],
+      "folder": "timelines",
+      "files": {
+        "python": "home_timeline.py"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/timelines/api-reference/get-users-id-reverse-chronological-timeline"
+    },
+    {
+      "name": "Filtered Stream",
+      "path": "/tweets/search/stream",
+      "method": "GET",
+      "auth": ["bearer"],
+      "folder": "streams",
+      "files": {
+        "python": "filtered_stream.py",
+        "javascript": "filtered_stream.js"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/filtered-stream/api-reference/get-tweets-search-stream"
+    },
+    {
+      "name": "Sampled Stream",
+      "path": "/tweets/sample/stream",
+      "method": "GET",
+      "auth": ["bearer"],
+      "folder": "streams",
+      "files": {
+        "python": "sampled_stream.py"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/volume-streams/api-reference/get-tweets-sample-stream"
+    },
+    {
+      "name": "Bookmarks Lookup",
+      "path": "/users/:id/bookmarks",
+      "method": "GET",
+      "auth": ["oauth2-user"],
+      "folder": "bookmarks",
+      "files": {
+        "python": "lookup.py"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/bookmarks/api-reference/get-users-id-bookmarks"
+    },
+    {
+      "name": "Create Bookmark",
+      "path": "/users/:id/bookmarks",
+      "method": "POST",
+      "auth": ["oauth2-user"],
+      "folder": "bookmarks",
+      "files": {
+        "python": "create.py"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/bookmarks/api-reference/post-users-id-bookmarks"
+    },
+    {
+      "name": "Delete Bookmark",
+      "path": "/users/:id/bookmarks/:tweet_id",
+      "method": "DELETE",
+      "auth": ["oauth2-user"],
+      "folder": "bookmarks",
+      "files": {
+        "python": "delete.py"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/bookmarks/api-reference/delete-users-id-bookmarks-tweet_id"
+    },
+    {
+      "name": "Spaces Lookup",
+      "path": "/spaces",
+      "method": "GET",
+      "auth": ["bearer", "oauth2-user"],
+      "folder": "spaces",
+      "files": {
+        "python": "lookup.py",
+        "javascript": "lookup.js"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/spaces/lookup/api-reference/get-spaces"
+    },
+    {
+      "name": "Spaces Search",
+      "path": "/spaces/search",
+      "method": "GET",
+      "auth": ["bearer", "oauth2-user"],
+      "folder": "spaces",
+      "files": {
+        "python": "search.py"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/spaces/search/api-reference/get-spaces-search"
+    },
+    {
+      "name": "List Lookup",
+      "path": "/lists/:id",
+      "method": "GET",
+      "auth": ["bearer", "oauth2-user"],
+      "folder": "lists",
+      "files": {
+        "python": "lookup.py",
+        "javascript": "lookup.js",
+        "ruby": "lookup.rb"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/lists/list-lookup/api-reference/get-lists-id"
+    },
+    {
+      "name": "Create List",
+      "path": "/lists",
+      "method": "POST",
+      "auth": ["oauth1", "oauth2-user"],
+      "folder": "lists",
+      "files": {
+        "python": "create.py"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/lists/manage-lists/api-reference/post-lists"
+    },
+    {
+      "name": "Delete List",
+      "path": "/lists/:id",
+      "method": "DELETE",
+      "auth": ["oauth1", "oauth2-user"],
+      "folder": "lists",
+      "files": {
+        "python": "delete.py"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/lists/manage-lists/api-reference/delete-lists-id"
+    },
+    {
+      "name": "DM Events Lookup",
+      "path": "/dm_events",
+      "method": "GET",
+      "auth": ["oauth1", "oauth2-user"],
+      "folder": "direct_messages",
+      "files": {
+        "python": "lookup.py"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/direct-messages/lookup/api-reference/get-dm-events"
+    },
+    {
+      "name": "Send DM",
+      "path": "/dm_conversations/with/:participant_id/messages",
+      "method": "POST",
+      "auth": ["oauth1", "oauth2-user"],
+      "folder": "direct_messages",
+      "files": {
+        "python": "send.py"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/direct-messages/manage/api-reference/post-dm-conversations-with-participant_id-messages"
+    },
+    {
+      "name": "Create Compliance Job",
+      "path": "/compliance/jobs",
+      "method": "POST",
+      "auth": ["bearer"],
+      "folder": "compliance",
+      "files": {
+        "python": "create_job.py"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/compliance/batch-compliance/api-reference/post-compliance-jobs"
+    },
+    {
+      "name": "Get Compliance Jobs",
+      "path": "/compliance/jobs",
+      "method": "GET",
+      "auth": ["bearer"],
+      "folder": "compliance",
+      "files": {
+        "python": "get_jobs.py"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/compliance/batch-compliance/api-reference/get-compliance-jobs"
+    },
+    {
+      "name": "API Usage",
+      "path": "/usage/tweets",
+      "method": "GET",
+      "auth": ["bearer"],
+      "folder": "usage",
+      "files": {
+        "python": "get_usage.py"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/usage/api-reference/get-usage-tweets"
+    }
+  ]
+}
