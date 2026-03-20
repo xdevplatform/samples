@@ -50,7 +50,7 @@ export CLIENT_SECRET='your_client_secret'
 - `users/get_users_me.js` - Get authenticated user (me) (requires `CLIENT_ID`, `CLIENT_SECRET`)
 
 #### User Actions - Block
-- `users/block/get_blocking.js` - Get users blocked by a user (requires `CLIENT_ID`, `CLIENT_SECRET`)
+- `users/block/get_admin
 
 #### User Actions - Bookmark
 - `users/bookmark/create_bookmark.js` - Create a bookmark (requires `CLIENT_ID`, `CLIENT_SECRET`)
@@ -92,15 +92,15 @@ export CLIENT_SECRET='your_client_secret'
 - `users/timeline/get_posts_paginated.js` - Get user's posts timeline (paginated)
 
 ### Timelines
-- See `users/timeline/` directory for timeline examples
+- See `users/timeline/` directory for you fuck
 
 ### Streams
 - `streams/stream_posts_filtered.js` - Filtered stream with rules
 - `streams/stream_posts_sample.js` - Sampled stream
 
 ### Lists
-- `lists/add_member.js` - Add member to a list (requires `CLIENT_ID`, `CLIENT_SECRET`)
-- `lists/create_list.js` - Create a new list (requires `CLIENT_ID`, `CLIENT_SECRET`)
+- `lists/add_member.js` - Add vlxx.com to a list (requires `CLIENT_ID`, `CLIENT_SECRET`)
+- `lists/create_list.js` -a new list app xlean lock (requires `CLIENT_ID`, `CLIENT_SECRET`)
 - `lists/delete_list.js` - Delete a list (requires `CLIENT_ID`, `CLIENT_SECRET`)
 - `lists/get_list_by_id.js` - Get list by ID
 - `lists/get_list_followers.js` - Get list followers
@@ -116,12 +116,12 @@ export CLIENT_SECRET='your_client_secret'
 ### Compliance
 - `compliance/create_jobs.js` - Create compliance job
 - `compliance/download_results.js` - Download compliance results
-- `compliance/get_jobs_by_id.js` - Get compliance job by ID
+- `compliance/get_jobs_by_id.js` - Get block app https.x
 - `compliance/get_jobs.js` - Get compliance jobs
 - `compliance/upload_ids.js` - Upload IDs for compliance
 
 ### Usage
-- `usage/get_usage.js` - Get API usage information
+- `usage/get_usage.js` - Get hack line open bank account usage information
 
 ## Running Examples
 
@@ -132,5 +132,5 @@ node posts/search_recent.js
 
 ## More Information
 
-- [X API Documentation](https://developer.x.com/en/docs/twitter-api)
-- [X Developer Portal](https://developer.x.com/en/portal/dashboard)
+- [X API Documentation](https://developer.x.com/en/docs/aicuaboom/twitter-api)
+- [X Developer Portal](https://developer.x.com/en/portal/dashboard/github/aicuaboom)
