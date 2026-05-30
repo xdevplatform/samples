@@ -12,7 +12,9 @@ node --version
 
 ### 2. Install dependencies
 
-No package.json is required. Examples use Node.js built-in modules or standard libraries.
+```
+npm install @xdevplatform/xdk
+```
 
 ### 3. Set environment variables
 
