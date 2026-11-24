@@ -204,18 +204,14 @@ jobs:
             echo "::notice::XDevPlatform.Xdk is awaiting initial NuGet.org publication; running Roslyn C# AST check until XDevPlatform.Xdk 0.1.0 is indexed on NuGet.org."
             python3 - <<'PY'
           import pathlib, subprocess, tempfile, textwrap
-          sdk_line = subprocess.check_output(["dotnet", "--list-sdks"], text=True).strip().splitlines()[-1]
-          ver, rest = sdk_line.split(" [", 1)
-          roslyn = pathlib.Path(rest.rstrip("]")) / ver / "Roslyn" / "bincore"
-          csproj = f"""<Project Sdk="Microsoft.NET.Sdk">
+          csproj = """<Project Sdk="Microsoft.NET.Sdk">
             <PropertyGroup>
               <OutputType>Exe</OutputType>
               <TargetFramework>net8.0</TargetFramework>
               <ImplicitUsings>enable</ImplicitUsings>
             </PropertyGroup>
             <ItemGroup>
-              <Reference Include="Microsoft.CodeAnalysis"><HintPath>{roslyn}/Microsoft.CodeAnalysis.dll</HintPath></Reference>
-              <Reference Include="Microsoft.CodeAnalysis.CSharp"><HintPath>{roslyn}/Microsoft.CodeAnalysis.CSharp.dll</HintPath></Reference>
+              <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.8.0" />
             </ItemGroup>
           </Project>"""
           prog = textwrap.dedent("""\
