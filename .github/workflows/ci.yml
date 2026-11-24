@@ -133,57 +133,11 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '21'
+          cache: 'maven'
+          cache-dependency-path: java/pom.xml
 
       - name: Compile Java samples
-        run: |
-          if curl -fsSI https://repo1.maven.org/maven2/com/x/xdk/maven-metadata.xml >/dev/null 2>&1; then
-            mvn -B -f java/pom.xml compile
-          else
-            echo "::notice::com.x:xdk is awaiting initial Maven Central publication; running JDK 17 AST syntax check until com.x:xdk 0.1.0 is indexed on Central."
-            python3 - <<'PY'
-          import pathlib, subprocess, tempfile
-          code = """
-          import com.sun.source.util.JavacTask;
-          import java.io.File;
-          import java.nio.file.*;
-          import java.util.*;
-          import java.util.stream.*;
-          import javax.tools.*;
-
-          public class ParseCheck {
-              public static void main(String[] args) throws Exception {
-                  List<File> files;
-                  try (Stream<Path> walk = Files.walk(Paths.get("java"))) {
-                      files = walk.filter(p -> p.toString().endsWith(".java"))
-                                  .map(Path::toFile)
-                                  .collect(Collectors.toList());
-                  }
-                  if (files.size() < 80) {
-                      throw new IllegalStateException("Expected >=80 Java files, found " + files.size());
-                  }
-                  JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
-                  DiagnosticCollector<JavaFileObject> diagnostics = new DiagnosticCollector<>();
-                  try (StandardJavaFileManager fm = compiler.getStandardFileManager(diagnostics, null, null)) {
-                      Iterable<? extends JavaFileObject> units = fm.getJavaFileObjectsFromFiles(files);
-                      JavacTask task = (JavacTask) compiler.getTask(
-                          null, fm, diagnostics, List.of("--release", "17"), null, units);
-                      task.parse();
-                  }
-                  long errors = diagnostics.getDiagnostics().stream()
-                      .filter(d -> d.getKind() == Diagnostic.Kind.ERROR)
-                      .peek(System.err::println)
-                      .count();
-                  System.out.println("Parsed " + files.size() + " Java files cleanly.");
-                  if (errors > 0) System.exit(1);
-              }
-          }
-          """
-          with tempfile.TemporaryDirectory() as d:
-              p = pathlib.Path(d) / "ParseCheck.java"
-              p.write_text(code)
-              subprocess.run(["java", str(p)], check=True)
-          PY
-          fi
+        run: mvn -B -f java/pom.xml compile
 
   csharp:
     name: C# / .NET 8 (XDevPlatform.Xdk)
@@ -195,52 +149,7 @@ jobs:
         with:
           dotnet-version: '8.0.x'
 
-      - name: Build C# samples
+      - name: Build and verify C# samples
         run: |
-          if curl -fsSI https://api.nuget.org/v3-flatcontainer/xdevplatform.xdk/index.json >/dev/null 2>&1; then
-            dotnet build csharp/XdkSamples.csproj -warnaserror
-            dotnet run --project csharp/XdkSamples.csproj --no-build -- --help >/dev/null
-          else
-            echo "::notice::XDevPlatform.Xdk is awaiting initial NuGet.org publication; running Roslyn C# AST check until XDevPlatform.Xdk 0.1.0 is indexed on NuGet.org."
-            python3 - <<'PY'
-          import pathlib, subprocess, tempfile, textwrap
-          csproj = """<Project Sdk="Microsoft.NET.Sdk">
-            <PropertyGroup>
-              <OutputType>Exe</OutputType>
-              <TargetFramework>net8.0</TargetFramework>
-              <ImplicitUsings>enable</ImplicitUsings>
-            </PropertyGroup>
-            <ItemGroup>
-              <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.8.0" />
-            </ItemGroup>
-          </Project>"""
-          prog = textwrap.dedent("""\
-          using Microsoft.CodeAnalysis;
-          using Microsoft.CodeAnalysis.CSharp;
-
-          var csFiles = Directory.EnumerateFiles(args[0], "*.cs", SearchOption.AllDirectories)
-              .Where(p => !p.Contains($"{Path.DirectorySeparatorChar}bin{Path.DirectorySeparatorChar}")
-                       && !p.Contains($"{Path.DirectorySeparatorChar}obj{Path.DirectorySeparatorChar}"))
-              .OrderBy(p => p)
-              .ToList();
-          if (csFiles.Count < 81) throw new Exception($"Expected >=81 C# files, found {csFiles.Count}");
-          var errors = 0;
-          foreach (var f in csFiles)
-          {
-              var tree = CSharpSyntaxTree.ParseText(File.ReadAllText(f), path: f);
-              foreach (var diag in tree.GetDiagnostics().Where(d => d.Severity == DiagnosticSeverity.Error))
-              {
-                  Console.Error.WriteLine(diag);
-                  errors++;
-              }
-          }
-          Console.WriteLine($"Parsed {csFiles.Count} C# files cleanly with Roslyn.");
-          return errors > 0 ? 1 : 0;
-          """)
-          with tempfile.TemporaryDirectory() as d:
-              dp = pathlib.Path(d)
-              (dp / "Check.csproj").write_text(csproj)
-              (dp / "Program.cs").write_text(prog)
-              subprocess.run(["dotnet", "run", "--project", str(dp / "Check.csproj"), "--", "csharp"], check=True)
-          PY
-          fi
+          dotnet build csharp/XdkSamples.csproj -warnaserror
+          dotnet run --project csharp/XdkSamples.csproj --no-build -- --help >/dev/null

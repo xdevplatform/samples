@@ -16,7 +16,7 @@ Add `com.x:xdk` to your `pom.xml` (already configured in [`java/pom.xml`](./pom.
 <dependency>
     <groupId>com.x</groupId>
     <artifactId>xdk</artifactId>
-    <version>[0.1.0,)</version>
+    <version>0.1.1</version>
 </dependency>
 ```
 

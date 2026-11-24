@@ -15,7 +15,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>17</maven.compiler.release>
-        <xdk.version>[0.1.0,)</xdk.version>
+        <xdk.version>[0.1.1,)</xdk.version>
     </properties>
 
     <dependencies>

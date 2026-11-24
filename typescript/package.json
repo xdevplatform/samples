@@ -11,7 +11,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@xdevplatform/xdk": "^0.7.0"
+    "@xdevplatform/xdk": "^0.7.1"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",

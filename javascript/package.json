@@ -7,6 +7,6 @@
     "node": ">=18.0.0"
   },
   "dependencies": {
-    "@xdevplatform/xdk": "^0.7.0"
+    "@xdevplatform/xdk": "^0.7.1"
   }
 }
