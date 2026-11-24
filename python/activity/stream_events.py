@@ -25,9 +25,9 @@ client = Client(bearer_token=bearer_token)
 def main():
     print("Connecting to activity stream... (press Ctrl+C to stop)")
 
-    # The stream() method returns a generator that yields events as they arrive.
+    # The activity() stream method returns a generator that yields events as they arrive.
     # The SDK manages reconnection with exponential backoff automatically.
-    for event in client.activity.stream():
+    for event in client.stream.activity():
         # Access data attribute (model uses extra='allow' so data should be available)
         # Use getattr with fallback in case data field is missing from response
         event_data = getattr(event, 'data', None)

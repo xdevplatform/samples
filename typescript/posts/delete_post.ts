@@ -1,0 +1,96 @@
+/**
+ * Delete Post - X API v2
+ * 
+ * Endpoint: DELETE https://api.x.com/2/posts/:id
+ * Docs: https://developer.x.com/en/docs/twitter-api/tweets/manage-tweets/api-reference/delete-tweets-id
+ * 
+ * Authentication: OAuth 2.0 (User Context)
+ * Required env vars: CLIENT_ID, CLIENT_SECRET
+ */
+
+import {
+  Client,
+  OAuth2,
+  generateCodeVerifier,
+  generateCodeChallenge,
+  type OAuth2Config,
+} from '@xdevplatform/xdk';
+
+import * as readlineModule from 'node:readline';
+
+const readline = readlineModule.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+const clientId = process.env.CLIENT_ID ?? '';
+const clientSecret = process.env.CLIENT_SECRET;
+
+// Replace with the post ID you want to delete
+const postId = "post-id-to-delete";
+
+async function input(prompt: string): Promise<string> {
+  return new Promise((resolve) => {
+    readline.question(prompt, (out) => {
+      readline.close();
+      resolve(out);
+    });
+  });
+}
+
+// Helper function to parse callback URL
+const getQueryStringParams = (callbackInput: string): Record<string, string> => {
+  const queryString = callbackInput.includes('?') ? callbackInput.split('?')[1] : callbackInput.replace(/^[?#]/, '');
+  return Object.fromEntries(new URLSearchParams(queryString).entries());
+};
+
+(async () => {
+  try {
+    // Configure OAuth 2.0
+    const oauth2Config: OAuth2Config = {
+      clientId: clientId,
+      clientSecret: clientSecret,
+      redirectUri: 'https://example.com',
+      scope: ['tweet.read', 'users.read', 'tweet.write','offline.access']
+    };
+
+    const oauth2 = new OAuth2(oauth2Config);
+
+    // Generate PKCE parameters
+    const state = 'example-state';
+    const codeVerifier = generateCodeVerifier();
+    const codeChallenge = await generateCodeChallenge(codeVerifier);
+    
+    oauth2.setPkceParameters(codeVerifier, codeChallenge);
+    
+    // Get authorization URL
+    const authUrl = await oauth2.getAuthorizationUrl(state);
+    console.log('Please go here and authorize:', authUrl);
+
+    // Input callback URL from terminal
+    const redirectCallback = await input('Paste the redirected callback URL here: ');
+
+    // Parse callback
+    const { state: returnedState, code } = getQueryStringParams(redirectCallback);
+    if (returnedState !== state) {
+      console.log("State doesn't match");
+      process.exit(-1);
+    }
+
+    // Exchange code for tokens
+    const tokens = await oauth2.exchangeCode(code, codeVerifier);
+
+    // Create client with access token
+    const client = new Client({
+      accessToken: tokens.access_token
+    });
+
+    // Make the request using SDK
+    const response = await client.posts.delete(postId);
+    console.dir(response, { depth: null });
+  } catch (e) {
+    console.log(e);
+    process.exit(-1);
+  }
+  process.exit();
+})();

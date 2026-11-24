@@ -93,7 +93,7 @@ const getQueryStringParams = (query) => {
     });
 
     // Make the request using SDK
-    const response = await client.lists.create({ body: data });
+    const response = await client.lists.create(data);
     console.dir(response, {
       depth: null,
     });

@@ -1,0 +1,155 @@
+name: Verify Samples
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    # Weekly check against latest published XDK packages (Mondays 09:00 UTC)
+    - cron: '0 9 * * 1'
+
+permissions:
+  contents: read
+
+jobs:
+  python:
+    name: Python (xdk) & Catalog
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install xdk from PyPI
+        run: python -m pip install --upgrade pip xdk
+
+      - name: Verify Python samples & api-index.json
+        run: |
+          python - <<'PY'
+          import json
+          import pathlib
+          import py_compile
+          import re
+          from xdk import Client
+
+          client = Client(bearer_token="test")
+          py_files = sorted(pathlib.Path("python").rglob("*.py"))
+          assert len(py_files) >= 80, f"Expected >=80 Python samples, found {len(py_files)}"
+
+          bad_calls = []
+          for f in py_files:
+              py_compile.compile(str(f), doraise=True)
+              src = f.read_text(encoding="utf-8")
+              for m in re.finditer(r"\bclient\.([A-Za-z0-9_]+)\.([A-Za-z0-9_]+)\s*\(", src):
+                  sub, meth = m.group(1), m.group(2)
+                  sub_obj = getattr(client, sub, None)
+                  if sub_obj is None or not callable(getattr(sub_obj, meth, None)):
+                      bad_calls.append((str(f), sub, meth))
+
+          if bad_calls:
+              raise SystemExit(f"Unresolved xdk method calls: {bad_calls}")
+
+          catalog = json.loads(pathlib.Path("api-index.json").read_text(encoding="utf-8"))
+          missing_paths = []
+          for ep in catalog.get("endpoints", []):
+              for lang, rel_path in ep.get("files", {}).items():
+                  if not pathlib.Path(rel_path).is_file():
+                      missing_paths.append((ep.get("id"), lang, rel_path))
+
+          if missing_paths:
+              raise SystemExit(f"Missing files in api-index.json: {missing_paths}")
+
+          print(f"Verified {len(py_files)} Python samples and {len(catalog.get('endpoints', []))} catalog endpoints.")
+          PY
+
+  javascript-typescript:
+    name: JavaScript & TypeScript (@xdevplatform/xdk)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Verify JavaScript samples
+        run: |
+          cd javascript
+          npm install --no-audit --no-fund
+          find . -name "*.js" -not -path "./node_modules/*" -exec node --check {} +
+          node - <<'JS'
+          const fs = require('fs');
+          const path = require('path');
+          const { Client } = require('@xdevplatform/xdk');
+          const client = new Client({ bearerToken: 'test' });
+
+          function walk(dir) {
+            const out = [];
+            for (const ent of fs.readdirSync(dir, { withFileTypes: true })) {
+              if (ent.name === 'node_modules') continue;
+              const full = path.join(dir, ent.name);
+              if (ent.isDirectory()) out.push(...walk(full));
+              else if (ent.name.endsWith('.js')) out.push(full);
+            }
+            return out;
+          }
+
+          const files = walk('.');
+          const bad = [];
+          for (const f of files) {
+            const src = fs.readFileSync(f, 'utf8');
+            const re = /client\.([A-Za-z0-9_]+)\.([A-Za-z0-9_]+)\s*\(/g;
+            let m;
+            while ((m = re.exec(src)) !== null) {
+              const [, sub, meth] = m;
+              if (!client[sub] || typeof client[sub][meth] !== 'function') {
+                bad.push({ file: f, sub, meth });
+              }
+            }
+          }
+          if (bad.length > 0) {
+            console.error('Unresolved @xdevplatform/xdk calls:', bad);
+            process.exit(1);
+          }
+          console.log(`Verified ${files.length} JavaScript samples.`);
+          JS
+
+      - name: Type-check TypeScript samples (tsc --noEmit --strict)
+        run: |
+          cd typescript
+          npm install --no-audit --no-fund
+          npm run typecheck
+
+  java:
+    name: Java 17+ (com.x:xdk)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+          cache: 'maven'
+          cache-dependency-path: java/pom.xml
+
+      - name: Compile Java samples
+        run: mvn -B -f java/pom.xml compile
+
+  csharp:
+    name: C# / .NET 8 (XDevPlatform.Xdk)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Build and verify C# samples
+        run: |
+          dotnet build csharp/XdkSamples.csproj -warnaserror
+          dotnet run --project csharp/XdkSamples.csproj --no-build -- --help >/dev/null

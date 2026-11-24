@@ -19,7 +19,7 @@ client = Client(bearer_token=bearer_token)
 job_id = ''
 
 def main():
-    response = client.compliance.get_job(job_id)
+    response = client.compliance.get_jobs_by_id(job_id)
     
     print(json.dumps(response.data, indent=4, sort_keys=True))
 

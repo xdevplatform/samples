@@ -20,7 +20,7 @@ client = Client(bearer_token=bearer_token)
 payload = {"type": "tweets", "name": "my_batch_compliance_job"}
 
 def main():
-    response = client.compliance.create_job(body=payload)
+    response = client.compliance.create_jobs(body=payload)
     
     print(json.dumps(response.data, indent=4, sort_keys=True))
 

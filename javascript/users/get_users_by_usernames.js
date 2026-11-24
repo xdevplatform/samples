@@ -19,7 +19,7 @@ const usernames = ['XDevelopers', 'X'];
         // Usernames to look up (up to 100)
         const response = await client.users.getByUsernames(usernames, {
             userFields: ['created_at', 'description', 'public_metrics'],
-            expansions: ['pinned_tweet_id']
+            expansions: ['pinned_post_id']
         });
         
         console.dir(response, { depth: null });

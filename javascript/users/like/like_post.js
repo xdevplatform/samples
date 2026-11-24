@@ -91,7 +91,7 @@ const getQueryStringParams = (query) => {
     });
 
     // Make the request using SDK
-    const response = await client.users.likePost(userId, {body: {tweet_id: postId}});
+    const response = await client.users.likePost(userId, { tweetId: postId });
     console.dir(response, {
       depth: null
     });

@@ -1,0 +1,12 @@
+{
+  "name": "x-api-v2-javascript-samples",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Official JavaScript (Node.js) sample code for the X API v2 powered by @xdevplatform/xdk",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@xdevplatform/xdk": "^0.7.1"
+  }
+}

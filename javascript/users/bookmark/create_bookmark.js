@@ -95,7 +95,7 @@ const tweetId = "post-id"; // Replace with the ID of the Post you wish to bookma
     }
 
     //Makes api call
-    const postBookmark = await client.users.createBookmark(userId, { tweet_id: tweetId });
+    const postBookmark = await client.users.createBookmark(userId, { tweetId });
     console.dir(postBookmark, {
       depth: null,
     });

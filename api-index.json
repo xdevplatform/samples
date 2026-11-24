@@ -1,489 +1,1487 @@
 {
   "name": "X API v2 Sample Code",
-  "version": "2.0",
+  "version": "3.0",
   "base_url": "https://api.x.com/2",
-  "languages": ["python", "javascript", "ruby", "java"],
+  "sdks": {
+    "python": {
+      "package": "xdk",
+      "registry": "https://pypi.org/project/xdk/",
+      "repo": "https://github.com/xdevplatform/xdk-python"
+    },
+    "typescript": {
+      "package": "@xdevplatform/xdk",
+      "registry": "https://www.npmjs.com/package/@xdevplatform/xdk",
+      "repo": "https://github.com/xdevplatform/xdk-typescript"
+    },
+    "javascript": {
+      "package": "@xdevplatform/xdk",
+      "registry": "https://www.npmjs.com/package/@xdevplatform/xdk",
+      "repo": "https://github.com/xdevplatform/xdk-typescript"
+    },
+    "java": {
+      "package": "com.x:xdk",
+      "registry": "https://central.sonatype.com/artifact/com.x/xdk",
+      "repo": "https://github.com/xdevplatform/xdk-java"
+    },
+    "csharp": {
+      "package": "XDevPlatform.Xdk",
+      "registry": "https://www.nuget.org/packages/XDevPlatform.Xdk",
+      "repo": "https://github.com/xdevplatform/xdk-csharp"
+    }
+  },
+  "languages": [
+    "python",
+    "typescript",
+    "javascript",
+    "java",
+    "csharp",
+    "ruby",
+    "r"
+  ],
   "endpoints": [
     {
-      "name": "Create Post",
-      "path": "/tweets",
+      "id": "activity/create_subscription",
+      "name": "* Create Activity Subscription",
+      "category": "activity",
       "method": "POST",
-      "auth": ["oauth1", "oauth2-user"],
-      "folder": "posts",
+      "path": "/activity/subscriptions",
+      "auth": [
+        "bearer"
+      ],
       "files": {
-        "python": "create_post.py",
-        "javascript": "create_post.js"
+        "python": "python/activity/create_subscription.py",
+        "typescript": "typescript/activity/create_subscription.ts",
+        "javascript": "javascript/activity/create_subscription.js",
+        "java": "java/activity/CreateSubscription.java",
+        "csharp": "csharp/activity/CreateSubscription.cs"
       },
-      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/manage-tweets/api-reference/post-tweets"
+      "docs": "https://docs.x.com/x-api/activity/introduction"
     },
     {
-      "name": "Delete Post",
-      "path": "/tweets/:id",
+      "id": "activity/delete_subscription",
+      "name": "* Delete Activity Subscription",
+      "category": "activity",
       "method": "DELETE",
-      "auth": ["oauth1", "oauth2-user"],
-      "folder": "posts",
+      "path": "/activity/subscriptions/:id",
+      "auth": [
+        "bearer"
+      ],
       "files": {
-        "python": "delete_post.py",
-        "javascript": "delete_post.js"
+        "python": "python/activity/delete_subscription.py",
+        "typescript": "typescript/activity/delete_subscription.ts",
+        "javascript": "javascript/activity/delete_subscription.js",
+        "java": "java/activity/DeleteSubscription.java",
+        "csharp": "csharp/activity/DeleteSubscription.cs"
       },
-      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/manage-tweets/api-reference/delete-tweets-id"
+      "docs": "https://docs.x.com/x-api/activity/introduction"
     },
     {
-      "name": "Post Lookup",
-      "path": "/tweets",
+      "id": "activity/list_subscriptions",
+      "name": "* List Activity Subscriptions",
+      "category": "activity",
       "method": "GET",
-      "auth": ["bearer", "oauth1", "oauth2-user"],
-      "folder": "posts",
+      "path": "/activity/subscriptions",
+      "auth": [
+        "bearer"
+      ],
       "files": {
-        "python": "lookup.py",
-        "javascript": "lookup.js",
-        "ruby": "lookup.rb"
+        "python": "python/activity/list_subscriptions.py",
+        "typescript": "typescript/activity/list_subscriptions.ts",
+        "javascript": "javascript/activity/list_subscriptions.js",
+        "java": "java/activity/ListSubscriptions.java",
+        "csharp": "csharp/activity/ListSubscriptions.cs"
       },
-      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/lookup/api-reference/get-tweets"
+      "docs": "https://docs.x.com/x-api/activity/introduction"
     },
     {
-      "name": "Recent Search",
-      "path": "/tweets/search/recent",
+      "id": "activity/stream_events",
+      "name": "* Activity Stream",
+      "category": "activity",
       "method": "GET",
-      "auth": ["bearer", "oauth2-user"],
-      "folder": "posts",
+      "path": "/activity/stream",
+      "auth": [
+        "bearer"
+      ],
       "files": {
-        "python": "search_recent.py",
-        "javascript": "search_recent.js",
-        "ruby": "search_recent.rb",
-        "java": "SearchRecent.java"
+        "python": "python/activity/stream_events.py",
+        "typescript": "typescript/activity/stream_events.ts",
+        "javascript": "javascript/activity/stream_events.js",
+        "java": "java/activity/StreamEvents.java",
+        "csharp": "csharp/activity/StreamEvents.cs"
       },
-      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent"
+      "docs": "https://docs.x.com/x-api/activity/introduction"
     },
     {
-      "name": "Full Archive Search",
-      "path": "/tweets/search/all",
-      "method": "GET",
-      "auth": ["bearer"],
-      "folder": "posts",
+      "id": "activity/update_subscription",
+      "name": "* Update Activity Subscription",
+      "category": "activity",
+      "method": "PUT",
+      "path": "/activity/subscriptions/:id",
+      "auth": [
+        "bearer"
+      ],
       "files": {
-        "python": "search_full_archive.py"
+        "python": "python/activity/update_subscription.py",
+        "typescript": "typescript/activity/update_subscription.ts",
+        "javascript": "javascript/activity/update_subscription.js",
+        "java": "java/activity/UpdateSubscription.java",
+        "csharp": "csharp/activity/UpdateSubscription.cs"
       },
-      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-all",
-      "note": "Requires Academic Research access"
+      "docs": "https://docs.x.com/x-api/activity/introduction"
     },
     {
-      "name": "Recent Post Counts",
-      "path": "/tweets/counts/recent",
-      "method": "GET",
-      "auth": ["bearer"],
-      "folder": "posts",
-      "files": {
-        "python": "counts_recent.py"
-      },
-      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/counts/api-reference/get-tweets-counts-recent"
-    },
-    {
-      "name": "Quote Posts",
-      "path": "/tweets/:id/quote_tweets",
-      "method": "GET",
-      "auth": ["bearer", "oauth2-user"],
-      "folder": "posts",
-      "files": {
-        "python": "quote_posts.py"
-      },
-      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/quote-tweets/api-reference/get-tweets-id-quote_tweets"
-    },
-    {
-      "name": "Repost",
-      "path": "/users/:id/retweets",
+      "id": "compliance/create_jobs",
+      "name": "* Create Compliance Job",
+      "category": "compliance",
       "method": "POST",
-      "auth": ["oauth1", "oauth2-user"],
-      "folder": "posts",
-      "files": {
-        "python": "repost.py"
-      },
-      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/retweets/api-reference/post-users-id-retweets"
-    },
-    {
-      "name": "Undo Repost",
-      "path": "/users/:id/retweets/:source_tweet_id",
-      "method": "DELETE",
-      "auth": ["oauth1", "oauth2-user"],
-      "folder": "posts",
-      "files": {
-        "python": "undo_repost.py"
-      },
-      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/retweets/api-reference/delete-users-id-retweets-tweet_id"
-    },
-    {
-      "name": "Reposted By",
-      "path": "/tweets/:id/retweeted_by",
-      "method": "GET",
-      "auth": ["bearer", "oauth2-user"],
-      "folder": "posts",
-      "files": {
-        "python": "reposted_by.py"
-      },
-      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/retweets/api-reference/get-tweets-id-retweeted_by"
-    },
-    {
-      "name": "Like Post",
-      "path": "/users/:id/likes",
-      "method": "POST",
-      "auth": ["oauth1", "oauth2-user"],
-      "folder": "posts",
-      "files": {
-        "python": "like.py"
-      },
-      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/likes/api-reference/post-users-id-likes"
-    },
-    {
-      "name": "Unlike Post",
-      "path": "/users/:id/likes/:tweet_id",
-      "method": "DELETE",
-      "auth": ["oauth1", "oauth2-user"],
-      "folder": "posts",
-      "files": {
-        "python": "unlike.py"
-      },
-      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/likes/api-reference/delete-users-id-likes-tweet_id"
-    },
-    {
-      "name": "Liking Users",
-      "path": "/tweets/:id/liking_users",
-      "method": "GET",
-      "auth": ["bearer", "oauth2-user"],
-      "folder": "posts",
-      "files": {
-        "python": "liking_users.py"
-      },
-      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/likes/api-reference/get-tweets-id-liking_users"
-    },
-    {
-      "name": "Liked Posts",
-      "path": "/users/:id/liked_tweets",
-      "method": "GET",
-      "auth": ["bearer", "oauth2-user"],
-      "folder": "posts",
-      "files": {
-        "python": "liked_posts.py"
-      },
-      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/likes/api-reference/get-users-id-liked_tweets"
-    },
-    {
-      "name": "User Lookup",
-      "path": "/users/by",
-      "method": "GET",
-      "auth": ["bearer", "oauth1", "oauth2-user"],
-      "folder": "users",
-      "files": {
-        "python": "lookup.py",
-        "javascript": "lookup.js",
-        "ruby": "lookup.rb",
-        "java": "Lookup.java"
-      },
-      "docs": "https://developer.x.com/en/docs/twitter-api/users/lookup/api-reference/get-users-by"
-    },
-    {
-      "name": "Authenticated User (Me)",
-      "path": "/users/me",
-      "method": "GET",
-      "auth": ["oauth1", "oauth2-user"],
-      "folder": "users",
-      "files": {
-        "python": "me.py"
-      },
-      "docs": "https://developer.x.com/en/docs/twitter-api/users/lookup/api-reference/get-users-me"
-    },
-    {
-      "name": "User Followers",
-      "path": "/users/:id/followers",
-      "method": "GET",
-      "auth": ["bearer", "oauth2-user"],
-      "folder": "users",
-      "files": {
-        "python": "followers.py",
-        "javascript": "followers.js",
-        "ruby": "followers.rb"
-      },
-      "docs": "https://developer.x.com/en/docs/twitter-api/users/follows/api-reference/get-users-id-followers"
-    },
-    {
-      "name": "User Following",
-      "path": "/users/:id/following",
-      "method": "GET",
-      "auth": ["bearer", "oauth2-user"],
-      "folder": "users",
-      "files": {
-        "python": "following.py"
-      },
-      "docs": "https://developer.x.com/en/docs/twitter-api/users/follows/api-reference/get-users-id-following"
-    },
-    {
-      "name": "Block User",
-      "path": "/users/:id/blocking",
-      "method": "POST",
-      "auth": ["oauth1", "oauth2-user"],
-      "folder": "users",
-      "files": {
-        "python": "block.py"
-      },
-      "docs": "https://developer.x.com/en/docs/twitter-api/users/blocks/api-reference/post-users-user_id-blocking"
-    },
-    {
-      "name": "Unblock User",
-      "path": "/users/:source_user_id/blocking/:target_user_id",
-      "method": "DELETE",
-      "auth": ["oauth1", "oauth2-user"],
-      "folder": "users",
-      "files": {
-        "python": "unblock.py"
-      },
-      "docs": "https://developer.x.com/en/docs/twitter-api/users/blocks/api-reference/delete-users-user_id-blocking"
-    },
-    {
-      "name": "Blocked Users",
-      "path": "/users/:id/blocking",
-      "method": "GET",
-      "auth": ["oauth1", "oauth2-user"],
-      "folder": "users",
-      "files": {
-        "python": "blocked.py"
-      },
-      "docs": "https://developer.x.com/en/docs/twitter-api/users/blocks/api-reference/get-users-blocking"
-    },
-    {
-      "name": "Mute User",
-      "path": "/users/:id/muting",
-      "method": "POST",
-      "auth": ["oauth1", "oauth2-user"],
-      "folder": "users",
-      "files": {
-        "python": "mute.py"
-      },
-      "docs": "https://developer.x.com/en/docs/twitter-api/users/mutes/api-reference/post-users-user_id-muting"
-    },
-    {
-      "name": "Unmute User",
-      "path": "/users/:source_user_id/muting/:target_user_id",
-      "method": "DELETE",
-      "auth": ["oauth1", "oauth2-user"],
-      "folder": "users",
-      "files": {
-        "python": "unmute.py"
-      },
-      "docs": "https://developer.x.com/en/docs/twitter-api/users/mutes/api-reference/delete-users-user_id-muting"
-    },
-    {
-      "name": "Muted Users",
-      "path": "/users/:id/muting",
-      "method": "GET",
-      "auth": ["oauth1", "oauth2-user"],
-      "folder": "users",
-      "files": {
-        "python": "muted.py"
-      },
-      "docs": "https://developer.x.com/en/docs/twitter-api/users/mutes/api-reference/get-users-muting"
-    },
-    {
-      "name": "User Posts Timeline",
-      "path": "/users/:id/tweets",
-      "method": "GET",
-      "auth": ["bearer", "oauth2-user"],
-      "folder": "timelines",
-      "files": {
-        "python": "user_posts.py",
-        "javascript": "user_posts.js",
-        "ruby": "user_posts.rb"
-      },
-      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/timelines/api-reference/get-users-id-tweets"
-    },
-    {
-      "name": "User Mentions Timeline",
-      "path": "/users/:id/mentions",
-      "method": "GET",
-      "auth": ["bearer", "oauth2-user"],
-      "folder": "timelines",
-      "files": {
-        "python": "user_mentions.py"
-      },
-      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/timelines/api-reference/get-users-id-mentions"
-    },
-    {
-      "name": "Home Timeline",
-      "path": "/users/:id/reverse_chronological_timeline",
-      "method": "GET",
-      "auth": ["oauth1", "oauth2-user"],
-      "folder": "timelines",
-      "files": {
-        "python": "home_timeline.py"
-      },
-      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/timelines/api-reference/get-users-id-reverse-chronological-timeline"
-    },
-    {
-      "name": "Filtered Stream",
-      "path": "/tweets/search/stream",
-      "method": "GET",
-      "auth": ["bearer"],
-      "folder": "streams",
-      "files": {
-        "python": "filtered_stream.py",
-        "javascript": "filtered_stream.js"
-      },
-      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/filtered-stream/api-reference/get-tweets-search-stream"
-    },
-    {
-      "name": "Sampled Stream",
-      "path": "/tweets/sample/stream",
-      "method": "GET",
-      "auth": ["bearer"],
-      "folder": "streams",
-      "files": {
-        "python": "sampled_stream.py"
-      },
-      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/volume-streams/api-reference/get-tweets-sample-stream"
-    },
-    {
-      "name": "Bookmarks Lookup",
-      "path": "/users/:id/bookmarks",
-      "method": "GET",
-      "auth": ["oauth2-user"],
-      "folder": "bookmarks",
-      "files": {
-        "python": "lookup.py"
-      },
-      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/bookmarks/api-reference/get-users-id-bookmarks"
-    },
-    {
-      "name": "Create Bookmark",
-      "path": "/users/:id/bookmarks",
-      "method": "POST",
-      "auth": ["oauth2-user"],
-      "folder": "bookmarks",
-      "files": {
-        "python": "create.py"
-      },
-      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/bookmarks/api-reference/post-users-id-bookmarks"
-    },
-    {
-      "name": "Delete Bookmark",
-      "path": "/users/:id/bookmarks/:tweet_id",
-      "method": "DELETE",
-      "auth": ["oauth2-user"],
-      "folder": "bookmarks",
-      "files": {
-        "python": "delete.py"
-      },
-      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/bookmarks/api-reference/delete-users-id-bookmarks-tweet_id"
-    },
-    {
-      "name": "Spaces Lookup",
-      "path": "/spaces",
-      "method": "GET",
-      "auth": ["bearer", "oauth2-user"],
-      "folder": "spaces",
-      "files": {
-        "python": "lookup.py",
-        "javascript": "lookup.js"
-      },
-      "docs": "https://developer.x.com/en/docs/twitter-api/spaces/lookup/api-reference/get-spaces"
-    },
-    {
-      "name": "Spaces Search",
-      "path": "/spaces/search",
-      "method": "GET",
-      "auth": ["bearer", "oauth2-user"],
-      "folder": "spaces",
-      "files": {
-        "python": "search.py"
-      },
-      "docs": "https://developer.x.com/en/docs/twitter-api/spaces/search/api-reference/get-spaces-search"
-    },
-    {
-      "name": "List Lookup",
-      "path": "/lists/:id",
-      "method": "GET",
-      "auth": ["bearer", "oauth2-user"],
-      "folder": "lists",
-      "files": {
-        "python": "lookup.py",
-        "javascript": "lookup.js",
-        "ruby": "lookup.rb"
-      },
-      "docs": "https://developer.x.com/en/docs/twitter-api/lists/list-lookup/api-reference/get-lists-id"
-    },
-    {
-      "name": "Create List",
-      "path": "/lists",
-      "method": "POST",
-      "auth": ["oauth1", "oauth2-user"],
-      "folder": "lists",
-      "files": {
-        "python": "create.py"
-      },
-      "docs": "https://developer.x.com/en/docs/twitter-api/lists/manage-lists/api-reference/post-lists"
-    },
-    {
-      "name": "Delete List",
-      "path": "/lists/:id",
-      "method": "DELETE",
-      "auth": ["oauth1", "oauth2-user"],
-      "folder": "lists",
-      "files": {
-        "python": "delete.py"
-      },
-      "docs": "https://developer.x.com/en/docs/twitter-api/lists/manage-lists/api-reference/delete-lists-id"
-    },
-    {
-      "name": "DM Events Lookup",
-      "path": "/dm_events",
-      "method": "GET",
-      "auth": ["oauth1", "oauth2-user"],
-      "folder": "direct_messages",
-      "files": {
-        "python": "lookup.py"
-      },
-      "docs": "https://developer.x.com/en/docs/twitter-api/direct-messages/lookup/api-reference/get-dm-events"
-    },
-    {
-      "name": "Send DM",
-      "path": "/dm_conversations/with/:participant_id/messages",
-      "method": "POST",
-      "auth": ["oauth1", "oauth2-user"],
-      "folder": "direct_messages",
-      "files": {
-        "python": "send.py"
-      },
-      "docs": "https://developer.x.com/en/docs/twitter-api/direct-messages/manage/api-reference/post-dm-conversations-with-participant_id-messages"
-    },
-    {
-      "name": "Create Compliance Job",
       "path": "/compliance/jobs",
-      "method": "POST",
-      "auth": ["bearer"],
-      "folder": "compliance",
+      "auth": [
+        "bearer"
+      ],
       "files": {
-        "python": "create_job.py"
+        "python": "python/compliance/create_jobs.py",
+        "typescript": "typescript/compliance/create_jobs.ts",
+        "javascript": "javascript/compliance/create_jobs.js",
+        "java": "java/compliance/CreateJobs.java",
+        "csharp": "csharp/compliance/CreateJobs.cs"
       },
       "docs": "https://developer.x.com/en/docs/twitter-api/compliance/batch-compliance/api-reference/post-compliance-jobs"
     },
     {
-      "name": "Get Compliance Jobs",
-      "path": "/compliance/jobs",
+      "id": "compliance/download_results",
+      "name": "* Download Compliance Results",
+      "category": "compliance",
       "method": "GET",
-      "auth": ["bearer"],
-      "folder": "compliance",
+      "path": "<download_url>",
+      "auth": [
+        "bearer"
+      ],
       "files": {
-        "python": "get_jobs.py"
+        "python": "python/compliance/download_results.py",
+        "typescript": "typescript/compliance/download_results.ts",
+        "javascript": "javascript/compliance/download_results.js",
+        "java": "java/compliance/DownloadResults.java",
+        "csharp": "csharp/compliance/DownloadResults.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/compliance/batch-compliance/api-reference/get-compliance-jobs-id"
+    },
+    {
+      "id": "compliance/get_jobs",
+      "name": "* Get Compliance Jobs",
+      "category": "compliance",
+      "method": "GET",
+      "path": "/compliance/jobs",
+      "auth": [
+        "bearer"
+      ],
+      "files": {
+        "python": "python/compliance/get_jobs.py",
+        "typescript": "typescript/compliance/get_jobs.ts",
+        "javascript": "javascript/compliance/get_jobs.js",
+        "java": "java/compliance/GetJobs.java",
+        "csharp": "csharp/compliance/GetJobs.cs"
       },
       "docs": "https://developer.x.com/en/docs/twitter-api/compliance/batch-compliance/api-reference/get-compliance-jobs"
     },
     {
-      "name": "API Usage",
-      "path": "/usage/tweets",
+      "id": "compliance/get_jobs_by_id",
+      "name": "* Get Compliance Job by ID",
+      "category": "compliance",
       "method": "GET",
-      "auth": ["bearer"],
-      "folder": "usage",
+      "path": "/compliance/jobs/:id",
+      "auth": [
+        "bearer"
+      ],
       "files": {
-        "python": "get_usage.py"
+        "python": "python/compliance/get_jobs_by_id.py",
+        "typescript": "typescript/compliance/get_jobs_by_id.ts",
+        "javascript": "javascript/compliance/get_jobs_by_id.js",
+        "java": "java/compliance/GetJobsById.java",
+        "csharp": "csharp/compliance/GetJobsById.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/compliance/batch-compliance/api-reference/get-compliance-jobs-id"
+    },
+    {
+      "id": "compliance/upload_ids",
+      "name": "* Upload IDs for Compliance Job",
+      "category": "compliance",
+      "method": "PUT",
+      "path": "<upload_url>",
+      "auth": [
+        "bearer"
+      ],
+      "files": {
+        "python": "python/compliance/upload_ids.py",
+        "typescript": "typescript/compliance/upload_ids.ts",
+        "javascript": "javascript/compliance/upload_ids.js",
+        "java": "java/compliance/UploadIds.java",
+        "csharp": "csharp/compliance/UploadIds.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/compliance/batch-compliance/api-reference/post-compliance-jobs"
+    },
+    {
+      "id": "direct_messages/get_events_by_conversation",
+      "name": "* Get Events by Conversation ID",
+      "category": "direct_messages",
+      "method": "GET",
+      "path": "/dm_conversations/:dm_conversation_id/dm_events",
+      "auth": [
+        "oauth2-user"
+      ],
+      "files": {
+        "python": "python/direct_messages/get_events_by_conversation.py",
+        "typescript": "typescript/direct_messages/get_events_by_conversation.ts",
+        "javascript": "javascript/direct_messages/get_events_by_conversation.js",
+        "java": "java/direct_messages/GetEventsByConversation.java",
+        "csharp": "csharp/direct_messages/GetEventsByConversation.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/direct-messages/lookup/api-reference/get-dm-conversations-dm_conversation_id-dm_events"
+    },
+    {
+      "id": "direct_messages/get_one_to_one_conversation_events",
+      "name": "* Get One-to-One Conversation Events",
+      "category": "direct_messages",
+      "method": "GET",
+      "path": "/dm_conversations/with/:participant_id/dm_events",
+      "auth": [
+        "oauth2-user"
+      ],
+      "files": {
+        "python": "python/direct_messages/get_one_to_one_conversation_events.py",
+        "typescript": "typescript/direct_messages/get_one_to_one_conversation_events.ts",
+        "javascript": "javascript/direct_messages/get_one_to_one_conversation_events.js",
+        "java": "java/direct_messages/GetOneToOneConversationEvents.java",
+        "csharp": "csharp/direct_messages/GetOneToOneConversationEvents.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/direct-messages/lookup/api-reference/get-dm-conversations-with-participant_id-dm_events"
+    },
+    {
+      "id": "direct_messages/get_user_conversation_events",
+      "name": "* Get User Conversation Events",
+      "category": "direct_messages",
+      "method": "GET",
+      "path": "/dm_events",
+      "auth": [
+        "oauth2-user"
+      ],
+      "files": {
+        "python": "python/direct_messages/get_user_conversation_events.py",
+        "typescript": "typescript/direct_messages/get_user_conversation_events.ts",
+        "javascript": "javascript/direct_messages/get_user_conversation_events.js",
+        "java": "java/direct_messages/GetUserConversationEvents.java",
+        "csharp": "csharp/direct_messages/GetUserConversationEvents.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/direct-messages/lookup/api-reference/get-dm-events"
+    },
+    {
+      "id": "direct_messages/post_dm_to_conversation",
+      "name": "* Post DM to Conversation",
+      "category": "direct_messages",
+      "method": "POST",
+      "path": "/dm_conversations/:dm_conversation_id/messages",
+      "auth": [
+        "oauth2-user"
+      ],
+      "files": {
+        "python": "python/direct_messages/post_dm_to_conversation.py",
+        "typescript": "typescript/direct_messages/post_dm_to_conversation.ts",
+        "javascript": "javascript/direct_messages/post_dm_to_conversation.js",
+        "java": "java/direct_messages/PostDmToConversation.java",
+        "csharp": "csharp/direct_messages/PostDmToConversation.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/direct-messages/manage/api-reference/post-dm-conversations-dm_conversation_id-messages"
+    },
+    {
+      "id": "direct_messages/post_group_conversation_dm",
+      "name": "* Post Group Conversation Direct Message",
+      "category": "direct_messages",
+      "method": "POST",
+      "path": "/dm_conversations",
+      "auth": [
+        "oauth2-user"
+      ],
+      "files": {
+        "python": "python/direct_messages/post_group_conversation_dm.py",
+        "typescript": "typescript/direct_messages/post_group_conversation_dm.ts",
+        "javascript": "javascript/direct_messages/post_group_conversation_dm.js",
+        "java": "java/direct_messages/PostGroupConversationDm.java",
+        "csharp": "csharp/direct_messages/PostGroupConversationDm.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/direct-messages/manage/api-reference/post-dm-conversations"
+    },
+    {
+      "id": "direct_messages/post_one_to_one_dm",
+      "name": "* Post One-to-One Direct Message",
+      "category": "direct_messages",
+      "method": "POST",
+      "path": "/dm_conversations/with/:participant_id/messages",
+      "auth": [
+        "oauth2-user"
+      ],
+      "files": {
+        "python": "python/direct_messages/post_one_to_one_dm.py",
+        "typescript": "typescript/direct_messages/post_one_to_one_dm.ts",
+        "javascript": "javascript/direct_messages/post_one_to_one_dm.js",
+        "java": "java/direct_messages/PostOneToOneDm.java",
+        "csharp": "csharp/direct_messages/PostOneToOneDm.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/direct-messages/manage/api-reference/post-dm-conversations-with-participant_id-messages"
+    },
+    {
+      "id": "lists/add_member",
+      "name": "* Add List Member",
+      "category": "lists",
+      "method": "POST",
+      "path": "/lists/:id/members",
+      "auth": [
+        "oauth2-user"
+      ],
+      "files": {
+        "python": "python/lists/add_member.py",
+        "typescript": "typescript/lists/add_member.ts",
+        "javascript": "javascript/lists/add_member.js",
+        "java": "java/lists/AddMember.java",
+        "csharp": "csharp/lists/AddMember.cs",
+        "ruby": "ruby/lists/add_member.rb"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/lists/list-members/api-reference/post-lists-id-members"
+    },
+    {
+      "id": "lists/create_list",
+      "name": "* Create List",
+      "category": "lists",
+      "method": "POST",
+      "path": "/lists",
+      "auth": [
+        "oauth2-user"
+      ],
+      "files": {
+        "python": "python/lists/create_list.py",
+        "typescript": "typescript/lists/create_list.ts",
+        "javascript": "javascript/lists/create_list.js",
+        "java": "java/lists/CreateList.java",
+        "csharp": "csharp/lists/CreateList.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/lists/manage-lists/api-reference/post-lists"
+    },
+    {
+      "id": "lists/delete_list",
+      "name": "* Delete List",
+      "category": "lists",
+      "method": "DELETE",
+      "path": "/lists/:id",
+      "auth": [
+        "oauth2-user"
+      ],
+      "files": {
+        "python": "python/lists/delete_list.py",
+        "typescript": "typescript/lists/delete_list.ts",
+        "javascript": "javascript/lists/delete_list.js",
+        "java": "java/lists/DeleteList.java",
+        "csharp": "csharp/lists/DeleteList.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/lists/manage-lists/api-reference/delete-lists-id"
+    },
+    {
+      "id": "lists/get_list_by_id",
+      "name": "* List Lookup by ID",
+      "category": "lists",
+      "method": "GET",
+      "path": "/lists/:id",
+      "auth": [
+        "bearer"
+      ],
+      "files": {
+        "python": "python/lists/get_list_by_id.py",
+        "typescript": "typescript/lists/get_list_by_id.ts",
+        "javascript": "javascript/lists/get_list_by_id.js",
+        "java": "java/lists/GetListById.java",
+        "csharp": "csharp/lists/GetListById.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/lists/list-lookup/api-reference/get-lists-id"
+    },
+    {
+      "id": "lists/get_list_followers",
+      "name": "* List Followers Lookup",
+      "category": "lists",
+      "method": "GET",
+      "path": "/lists/:id/followers",
+      "auth": [
+        "bearer"
+      ],
+      "files": {
+        "python": "python/lists/get_list_followers.py",
+        "typescript": "typescript/lists/get_list_followers.ts",
+        "javascript": "javascript/lists/get_list_followers.js",
+        "java": "java/lists/GetListFollowers.java",
+        "csharp": "csharp/lists/GetListFollowers.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/lists/list-follows/api-reference/get-lists-id-followers"
+    },
+    {
+      "id": "lists/get_list_members",
+      "name": "* List Members Lookup",
+      "category": "lists",
+      "method": "GET",
+      "path": "/lists/:id/members",
+      "auth": [
+        "bearer"
+      ],
+      "files": {
+        "python": "python/lists/get_list_members.py",
+        "typescript": "typescript/lists/get_list_members.ts",
+        "javascript": "javascript/lists/get_list_members.js",
+        "java": "java/lists/GetListMembers.java",
+        "csharp": "csharp/lists/GetListMembers.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/lists/list-members/api-reference/get-lists-id-members"
+    },
+    {
+      "id": "lists/get_list_posts",
+      "name": "* List Posts",
+      "category": "lists",
+      "method": "GET",
+      "path": "/lists/:id/tweets",
+      "auth": [
+        "bearer"
+      ],
+      "files": {
+        "python": "python/lists/get_list_posts.py",
+        "typescript": "typescript/lists/get_list_posts.ts",
+        "javascript": "javascript/lists/get_list_posts.js",
+        "java": "java/lists/GetListPosts.java",
+        "csharp": "csharp/lists/GetListPosts.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/lists/list-tweets/api-reference/get-lists-id-tweets"
+    },
+    {
+      "id": "lists/remove_member",
+      "name": "* Remove List Member",
+      "category": "lists",
+      "method": "DELETE",
+      "path": "/lists/:id/members/:user_id",
+      "auth": [
+        "oauth2-user"
+      ],
+      "files": {
+        "python": "python/lists/remove_member.py",
+        "typescript": "typescript/lists/remove_member.ts",
+        "javascript": "javascript/lists/remove_member.js",
+        "java": "java/lists/RemoveMember.java",
+        "csharp": "csharp/lists/RemoveMember.cs",
+        "ruby": "ruby/lists/remove_member.rb"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/lists/list-members/api-reference/delete-lists-id-members-user_id"
+    },
+    {
+      "id": "lists/update_list",
+      "name": "* Update List",
+      "category": "lists",
+      "method": "PUT",
+      "path": "/lists/:id",
+      "auth": [
+        "oauth2-user"
+      ],
+      "files": {
+        "python": "python/lists/update_list.py",
+        "typescript": "typescript/lists/update_list.ts",
+        "javascript": "javascript/lists/update_list.js",
+        "java": "java/lists/UpdateList.java",
+        "csharp": "csharp/lists/UpdateList.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/lists/manage-lists/api-reference/put-lists-id"
+    },
+    {
+      "id": "media/media_upload_v2",
+      "name": "* Media Upload v2 (Chunked Video Upload)",
+      "category": "media",
+      "method": "POST",
+      "path": "/media/upload/initialize",
+      "auth": [
+        "oauth2-user"
+      ],
+      "files": {
+        "python": "python/media/media_upload_v2.py",
+        "typescript": "typescript/media/media_upload_v2.ts",
+        "javascript": "javascript/media/media_upload_v2.js",
+        "java": "java/media/MediaUploadV2.java",
+        "csharp": "csharp/media/MediaUploadV2.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/media/upload-media/api-reference"
+    },
+    {
+      "id": "media/upload",
+      "name": "* Media Upload (Single Payload)",
+      "category": "media",
+      "method": "POST",
+      "path": "/media/upload",
+      "auth": [
+        "oauth2-user"
+      ],
+      "files": {
+        "python": "python/media/upload.py",
+        "typescript": "typescript/media/upload.ts",
+        "javascript": "javascript/media/upload.js",
+        "java": "java/media/Upload.java",
+        "csharp": "csharp/media/Upload.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/media/upload-media/api-reference"
+    },
+    {
+      "id": "posts/create_post",
+      "name": "* Create Post",
+      "category": "posts",
+      "method": "POST",
+      "path": "/tweets",
+      "auth": [
+        "oauth2-user"
+      ],
+      "files": {
+        "python": "python/posts/create_post.py",
+        "typescript": "typescript/posts/create_post.ts",
+        "javascript": "javascript/posts/create_post.js",
+        "java": "java/posts/CreatePost.java",
+        "csharp": "csharp/posts/CreatePost.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/manage-tweets/api-reference/post-tweets"
+    },
+    {
+      "id": "posts/delete_post",
+      "name": "* Delete Post",
+      "category": "posts",
+      "method": "DELETE",
+      "path": "/tweets/:id",
+      "auth": [
+        "oauth2-user"
+      ],
+      "files": {
+        "python": "python/posts/delete_post.py",
+        "typescript": "typescript/posts/delete_post.ts",
+        "javascript": "javascript/posts/delete_post.js",
+        "java": "java/posts/DeletePost.java",
+        "csharp": "csharp/posts/DeletePost.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/manage-tweets/api-reference/delete-tweets-id"
+    },
+    {
+      "id": "posts/get_liking_users",
+      "name": "* Liking Users",
+      "category": "posts",
+      "method": "GET",
+      "path": "/tweets/:id/liking_users",
+      "auth": [
+        "oauth2-user"
+      ],
+      "files": {
+        "python": "python/posts/get_liking_users.py",
+        "typescript": "typescript/posts/get_liking_users.ts",
+        "javascript": "javascript/posts/get_liking_users.js",
+        "java": "java/posts/GetLikingUsers.java",
+        "csharp": "csharp/posts/GetLikingUsers.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/likes/api-reference/get-tweets-id-liking_users"
+    },
+    {
+      "id": "posts/get_post_by_id",
+      "name": "* Single Post Lookup",
+      "category": "posts",
+      "method": "GET",
+      "path": "/tweets/:id",
+      "auth": [
+        "bearer"
+      ],
+      "files": {
+        "python": "python/posts/get_post_by_id.py",
+        "typescript": "typescript/posts/get_post_by_id.ts",
+        "javascript": "javascript/posts/get_post_by_id.js",
+        "java": "java/posts/GetPostById.java",
+        "csharp": "csharp/posts/GetPostById.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/lookup/api-reference/get-tweets-id"
+    },
+    {
+      "id": "posts/get_post_counts_all",
+      "name": "* Full-Archive Post Counts",
+      "category": "posts",
+      "method": "GET",
+      "path": "/tweets/counts/all",
+      "auth": [
+        "bearer"
+      ],
+      "files": {
+        "python": "python/posts/get_post_counts_all.py",
+        "typescript": "typescript/posts/get_post_counts_all.ts",
+        "javascript": "javascript/posts/get_post_counts_all.js",
+        "java": "java/posts/GetPostCountsAll.java",
+        "csharp": "csharp/posts/GetPostCountsAll.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/counts/api-reference/get-tweets-counts-all"
+    },
+    {
+      "id": "posts/get_post_counts_recent",
+      "name": "* Recent Post Counts",
+      "category": "posts",
+      "method": "GET",
+      "path": "/tweets/counts/recent",
+      "auth": [
+        "bearer"
+      ],
+      "files": {
+        "python": "python/posts/get_post_counts_recent.py",
+        "typescript": "typescript/posts/get_post_counts_recent.ts",
+        "javascript": "javascript/posts/get_post_counts_recent.js",
+        "java": "java/posts/GetPostCountsRecent.java",
+        "csharp": "csharp/posts/GetPostCountsRecent.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/counts/api-reference/get-tweets-counts-recent"
+    },
+    {
+      "id": "posts/get_posts_by_ids",
+      "name": "* Post Lookup by IDs",
+      "category": "posts",
+      "method": "GET",
+      "path": "/tweets",
+      "auth": [
+        "bearer"
+      ],
+      "files": {
+        "python": "python/posts/get_posts_by_ids.py",
+        "typescript": "typescript/posts/get_posts_by_ids.ts",
+        "javascript": "javascript/posts/get_posts_by_ids.js",
+        "java": "java/posts/GetPostsByIds.java",
+        "csharp": "csharp/posts/GetPostsByIds.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/lookup/api-reference/get-tweets"
+    },
+    {
+      "id": "posts/get_quoted_posts",
+      "name": "* Quote Posts Lookup",
+      "category": "posts",
+      "method": "GET",
+      "path": "/tweets/:id/quote_tweets",
+      "auth": [
+        "bearer"
+      ],
+      "files": {
+        "python": "python/posts/get_quoted_posts.py",
+        "typescript": "typescript/posts/get_quoted_posts.ts",
+        "javascript": "javascript/posts/get_quoted_posts.js",
+        "java": "java/posts/GetQuotedPosts.java",
+        "csharp": "csharp/posts/GetQuotedPosts.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/quote-tweets/api-reference/get-tweets-id-quote_tweets"
+    },
+    {
+      "id": "posts/get_reposted_by",
+      "name": "* Reposted By (Users who reposted)",
+      "category": "posts",
+      "method": "GET",
+      "path": "/tweets/:id/retweeted_by",
+      "auth": [
+        "bearer"
+      ],
+      "files": {
+        "python": "python/posts/get_reposted_by.py",
+        "typescript": "typescript/posts/get_reposted_by.ts",
+        "javascript": "javascript/posts/get_reposted_by.js",
+        "java": "java/posts/GetRepostedBy.java",
+        "csharp": "csharp/posts/GetRepostedBy.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/retweets/api-reference/get-tweets-id-retweeted_by"
+    },
+    {
+      "id": "posts/hide_reply",
+      "name": "* Hide Reply",
+      "category": "posts",
+      "method": "PUT",
+      "path": "/tweets/:id/hidden",
+      "auth": [
+        "oauth2-user"
+      ],
+      "files": {
+        "python": "python/posts/hide_reply.py",
+        "typescript": "typescript/posts/hide_reply.ts",
+        "javascript": "javascript/posts/hide_reply.js",
+        "java": "java/posts/HideReply.java",
+        "csharp": "csharp/posts/HideReply.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/hide-replies/api-reference/put-tweets-id-hidden"
+    },
+    {
+      "id": "posts/search_all",
+      "name": "* Full-Archive Search",
+      "category": "posts",
+      "method": "GET",
+      "path": "/tweets/search/all",
+      "auth": [
+        "bearer"
+      ],
+      "files": {
+        "python": "python/posts/search_all.py",
+        "typescript": "typescript/posts/search_all.ts",
+        "javascript": "javascript/posts/search_all.js",
+        "java": "java/posts/SearchAll.java",
+        "csharp": "csharp/posts/SearchAll.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-all"
+    },
+    {
+      "id": "posts/search_recent",
+      "name": "* Recent Search",
+      "category": "posts",
+      "method": "GET",
+      "path": "/tweets/search/recent",
+      "auth": [
+        "bearer"
+      ],
+      "files": {
+        "python": "python/posts/search_recent.py",
+        "typescript": "typescript/posts/search_recent.ts",
+        "javascript": "javascript/posts/search_recent.js",
+        "java": "java/posts/SearchRecent.java",
+        "csharp": "csharp/posts/SearchRecent.cs",
+        "ruby": "ruby/posts/search_recent.rb"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent"
+    },
+    {
+      "id": "spaces/get_spaces_by_ids",
+      "name": "* Spaces Lookup by IDs",
+      "category": "spaces",
+      "method": "GET",
+      "path": "/spaces",
+      "auth": [
+        "bearer"
+      ],
+      "files": {
+        "python": "python/spaces/get_spaces_by_ids.py",
+        "typescript": "typescript/spaces/get_spaces_by_ids.ts",
+        "javascript": "javascript/spaces/get_spaces_by_ids.js",
+        "java": "java/spaces/GetSpacesByIds.java",
+        "csharp": "csharp/spaces/GetSpacesByIds.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/spaces/lookup/api-reference/get-spaces"
+    },
+    {
+      "id": "spaces/search_spaces",
+      "name": "* Search Spaces",
+      "category": "spaces",
+      "method": "GET",
+      "path": "/spaces/search",
+      "auth": [
+        "bearer"
+      ],
+      "files": {
+        "python": "python/spaces/search_spaces.py",
+        "typescript": "typescript/spaces/search_spaces.ts",
+        "javascript": "javascript/spaces/search_spaces.js",
+        "java": "java/spaces/SearchSpaces.java",
+        "csharp": "csharp/spaces/SearchSpaces.cs",
+        "ruby": "ruby/spaces/search_spaces.rb"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/spaces/search/api-reference/get-spaces-search"
+    },
+    {
+      "id": "streams/stream_posts_filtered",
+      "name": "* Filtered Stream",
+      "category": "streams",
+      "method": "GET",
+      "path": "/tweets/search/stream",
+      "auth": [
+        "bearer"
+      ],
+      "files": {
+        "python": "python/streams/stream_posts_filtered.py",
+        "typescript": "typescript/streams/stream_posts_filtered.ts",
+        "javascript": "javascript/streams/stream_posts_filtered.js",
+        "java": "java/streams/StreamPostsFiltered.java",
+        "csharp": "csharp/streams/StreamPostsFiltered.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/filtered-stream/api-reference/get-tweets-search-stream"
+    },
+    {
+      "id": "streams/stream_posts_sample",
+      "name": "* Sampled Stream (1% Volume)",
+      "category": "streams",
+      "method": "GET",
+      "path": "/tweets/sample/stream",
+      "auth": [
+        "bearer"
+      ],
+      "files": {
+        "python": "python/streams/stream_posts_sample.py",
+        "typescript": "typescript/streams/stream_posts_sample.ts",
+        "javascript": "javascript/streams/stream_posts_sample.js",
+        "java": "java/streams/StreamPostsSample.java",
+        "csharp": "csharp/streams/StreamPostsSample.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/volume-streams/api-reference/get-tweets-sample-stream"
+    },
+    {
+      "id": "usage/get_usage",
+      "name": "* Usage Posts",
+      "category": "usage",
+      "method": "GET",
+      "path": "/usage/tweets",
+      "auth": [
+        "bearer"
+      ],
+      "files": {
+        "python": "python/usage/get_usage.py",
+        "typescript": "typescript/usage/get_usage.ts",
+        "javascript": "javascript/usage/get_usage.js",
+        "java": "java/usage/GetUsage.java",
+        "csharp": "csharp/usage/GetUsage.cs"
       },
       "docs": "https://developer.x.com/en/docs/twitter-api/usage/api-reference/get-usage-tweets"
+    },
+    {
+      "id": "users/block/get_blocking",
+      "name": "* Blocked Users Lookup",
+      "category": "users",
+      "method": "GET",
+      "path": "/users/:id/blocking",
+      "auth": [
+        "oauth2-user"
+      ],
+      "files": {
+        "python": "python/users/block/get_blocking.py",
+        "typescript": "typescript/users/block/get_blocking.ts",
+        "javascript": "javascript/users/block/get_blocking.js",
+        "java": "java/users/block/GetBlocking.java",
+        "csharp": "csharp/users/block/GetBlocking.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/users/blocks/api-reference/get-users-blocking"
+    },
+    {
+      "id": "users/bookmark/create_bookmark",
+      "name": "* Create Bookmark",
+      "category": "users",
+      "method": "POST",
+      "path": "/users/:id/bookmarks",
+      "auth": [
+        "oauth2-user"
+      ],
+      "files": {
+        "python": "python/users/bookmark/create_bookmark.py",
+        "typescript": "typescript/users/bookmark/create_bookmark.ts",
+        "javascript": "javascript/users/bookmark/create_bookmark.js",
+        "java": "java/users/bookmark/CreateBookmark.java",
+        "csharp": "csharp/users/bookmark/CreateBookmark.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/bookmarks/api-reference/post-users-id-bookmarks"
+    },
+    {
+      "id": "users/bookmark/delete_bookmark",
+      "name": "* Delete Bookmark",
+      "category": "users",
+      "method": "DELETE",
+      "path": "/users/:id/bookmarks/:tweet_id",
+      "auth": [
+        "oauth2-user"
+      ],
+      "files": {
+        "python": "python/users/bookmark/delete_bookmark.py",
+        "typescript": "typescript/users/bookmark/delete_bookmark.ts",
+        "javascript": "javascript/users/bookmark/delete_bookmark.js",
+        "java": "java/users/bookmark/DeleteBookmark.java",
+        "csharp": "csharp/users/bookmark/DeleteBookmark.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/bookmarks/api-reference/delete-users-id-bookmarks-tweet_id"
+    },
+    {
+      "id": "users/bookmark/get_bookmarks",
+      "name": "* Bookmarks Lookup",
+      "category": "users",
+      "method": "GET",
+      "path": "/users/:id/bookmarks",
+      "auth": [
+        "oauth2-user"
+      ],
+      "files": {
+        "python": "python/users/bookmark/get_bookmarks.py",
+        "typescript": "typescript/users/bookmark/get_bookmarks.ts",
+        "javascript": "javascript/users/bookmark/get_bookmarks.js",
+        "java": "java/users/bookmark/GetBookmarks.java",
+        "csharp": "csharp/users/bookmark/GetBookmarks.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/bookmarks/api-reference/get-users-id-bookmarks"
+    },
+    {
+      "id": "users/follow/follow_user",
+      "name": "* Follow User",
+      "category": "users",
+      "method": "POST",
+      "path": "/users/:id/following",
+      "auth": [
+        "oauth2-user"
+      ],
+      "files": {
+        "python": "python/users/follow/follow_user.py",
+        "typescript": "typescript/users/follow/follow_user.ts",
+        "javascript": "javascript/users/follow/follow_user.js",
+        "java": "java/users/follow/FollowUser.java",
+        "csharp": "csharp/users/follow/FollowUser.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/users/follows/api-reference/post-users-id-following"
+    },
+    {
+      "id": "users/follow/get_followers",
+      "name": "* User Followers Lookup",
+      "category": "users",
+      "method": "GET",
+      "path": "/users/:id/followers",
+      "auth": [
+        "bearer"
+      ],
+      "files": {
+        "python": "python/users/follow/get_followers.py",
+        "typescript": "typescript/users/follow/get_followers.ts",
+        "javascript": "javascript/users/follow/get_followers.js",
+        "java": "java/users/follow/GetFollowers.java",
+        "csharp": "csharp/users/follow/GetFollowers.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/users/follows/api-reference/get-users-id-followers"
+    },
+    {
+      "id": "users/follow/get_following",
+      "name": "* User Following Lookup",
+      "category": "users",
+      "method": "GET",
+      "path": "/users/:id/following",
+      "auth": [
+        "bearer"
+      ],
+      "files": {
+        "python": "python/users/follow/get_following.py",
+        "typescript": "typescript/users/follow/get_following.ts",
+        "javascript": "javascript/users/follow/get_following.js",
+        "java": "java/users/follow/GetFollowing.java",
+        "csharp": "csharp/users/follow/GetFollowing.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/users/follows/api-reference/get-users-id-following"
+    },
+    {
+      "id": "users/follow/unfollow_user",
+      "name": "* Unfollow User",
+      "category": "users",
+      "method": "DELETE",
+      "path": "/users/:source_user_id/following/:target_user_id",
+      "auth": [
+        "oauth2-user"
+      ],
+      "files": {
+        "python": "python/users/follow/unfollow_user.py",
+        "typescript": "typescript/users/follow/unfollow_user.ts",
+        "javascript": "javascript/users/follow/unfollow_user.js",
+        "java": "java/users/follow/UnfollowUser.java",
+        "csharp": "csharp/users/follow/UnfollowUser.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/users/follows/api-reference/delete-users-source_user_id-following"
+    },
+    {
+      "id": "users/get_users_by_usernames",
+      "name": "* User Lookup by Usernames",
+      "category": "users",
+      "method": "GET",
+      "path": "/users/by",
+      "auth": [
+        "bearer"
+      ],
+      "files": {
+        "python": "python/users/get_users_by_usernames.py",
+        "typescript": "typescript/users/get_users_by_usernames.ts",
+        "javascript": "javascript/users/get_users_by_usernames.js",
+        "java": "java/users/GetUsersByUsernames.java",
+        "csharp": "csharp/users/GetUsersByUsernames.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/users/lookup/api-reference/get-users-by"
+    },
+    {
+      "id": "users/get_users_by_usernames_user_context",
+      "name": "* User Lookup (User Context)",
+      "category": "users",
+      "method": "GET",
+      "path": "/users/by",
+      "auth": [
+        "oauth2-user"
+      ],
+      "files": {
+        "python": "python/users/get_users_by_usernames_user_context.py",
+        "typescript": "typescript/users/get_users_by_usernames_user_context.ts",
+        "javascript": "javascript/users/get_users_by_usernames_user_context.js",
+        "java": "java/users/GetUsersByUsernamesUserContext.java",
+        "csharp": "csharp/users/GetUsersByUsernamesUserContext.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/users/lookup/api-reference/get-users-by"
+    },
+    {
+      "id": "users/get_users_me",
+      "name": "* Authenticated User Lookup (Me)",
+      "category": "users",
+      "method": "GET",
+      "path": "/users/me",
+      "auth": [
+        "oauth2-user"
+      ],
+      "files": {
+        "python": "python/users/get_users_me.py",
+        "typescript": "typescript/users/get_users_me.ts",
+        "javascript": "javascript/users/get_users_me.js",
+        "java": "java/users/GetUsersMe.java",
+        "csharp": "csharp/users/GetUsersMe.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/users/lookup/api-reference/get-users-me"
+    },
+    {
+      "id": "users/like/get_liked_posts",
+      "name": "* Liked Posts",
+      "category": "users",
+      "method": "GET",
+      "path": "/users/:id/liked_tweets",
+      "auth": [
+        "oauth2-user"
+      ],
+      "files": {
+        "python": "python/users/like/get_liked_posts.py",
+        "typescript": "typescript/users/like/get_liked_posts.ts",
+        "javascript": "javascript/users/like/get_liked_posts.js",
+        "java": "java/users/like/GetLikedPosts.java",
+        "csharp": "csharp/users/like/GetLikedPosts.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/likes/api-reference/get-users-id-liked_tweets"
+    },
+    {
+      "id": "users/like/like_post",
+      "name": "* Like a Post",
+      "category": "users",
+      "method": "POST",
+      "path": "/users/:id/likes",
+      "auth": [
+        "oauth2-user"
+      ],
+      "files": {
+        "python": "python/users/like/like_post.py",
+        "typescript": "typescript/users/like/like_post.ts",
+        "javascript": "javascript/users/like/like_post.js",
+        "java": "java/users/like/LikePost.java",
+        "csharp": "csharp/users/like/LikePost.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/likes/api-reference/post-users-id-likes"
+    },
+    {
+      "id": "users/like/unlike_post",
+      "name": "* Unlike a Post",
+      "category": "users",
+      "method": "DELETE",
+      "path": "/users/:id/likes/:tweet_id",
+      "auth": [
+        "oauth2-user"
+      ],
+      "files": {
+        "python": "python/users/like/unlike_post.py",
+        "typescript": "typescript/users/like/unlike_post.ts",
+        "javascript": "javascript/users/like/unlike_post.js",
+        "java": "java/users/like/UnlikePost.java",
+        "csharp": "csharp/users/like/UnlikePost.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/likes/api-reference/delete-users-id-likes-tweet_id"
+    },
+    {
+      "id": "users/lists/follow_list",
+      "name": "* Follow List",
+      "category": "users",
+      "method": "POST",
+      "path": "/users/:id/followed_lists",
+      "auth": [
+        "oauth2-user"
+      ],
+      "files": {
+        "python": "python/users/lists/follow_list.py",
+        "typescript": "typescript/users/lists/follow_list.ts",
+        "javascript": "javascript/users/lists/follow_list.js",
+        "java": "java/users/lists/FollowList.java",
+        "csharp": "csharp/users/lists/FollowList.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/lists/list-follows/api-reference/post-users-id-followed_lists"
+    },
+    {
+      "id": "users/lists/get_followed_lists",
+      "name": "* User Followed Lists Lookup",
+      "category": "users",
+      "method": "GET",
+      "path": "/users/:id/followed_lists",
+      "auth": [
+        "bearer"
+      ],
+      "files": {
+        "python": "python/users/lists/get_followed_lists.py",
+        "typescript": "typescript/users/lists/get_followed_lists.ts",
+        "javascript": "javascript/users/lists/get_followed_lists.js",
+        "java": "java/users/lists/GetFollowedLists.java",
+        "csharp": "csharp/users/lists/GetFollowedLists.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/lists/list-follows/api-reference/get-users-id-followed_lists"
+    },
+    {
+      "id": "users/lists/get_list_memberships",
+      "name": "* User List Memberships Lookup",
+      "category": "users",
+      "method": "GET",
+      "path": "/users/:id/list_memberships",
+      "auth": [
+        "bearer"
+      ],
+      "files": {
+        "python": "python/users/lists/get_list_memberships.py",
+        "typescript": "typescript/users/lists/get_list_memberships.ts",
+        "javascript": "javascript/users/lists/get_list_memberships.js",
+        "java": "java/users/lists/GetListMemberships.java",
+        "csharp": "csharp/users/lists/GetListMemberships.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/lists/list-members/api-reference/get-users-id-list_memberships"
+    },
+    {
+      "id": "users/lists/get_owned_lists",
+      "name": "* User Owned Lists Lookup",
+      "category": "users",
+      "method": "GET",
+      "path": "/users/:id/owned_lists",
+      "auth": [
+        "bearer"
+      ],
+      "files": {
+        "python": "python/users/lists/get_owned_lists.py",
+        "typescript": "typescript/users/lists/get_owned_lists.ts",
+        "javascript": "javascript/users/lists/get_owned_lists.js",
+        "java": "java/users/lists/GetOwnedLists.java",
+        "csharp": "csharp/users/lists/GetOwnedLists.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/lists/list-lookup/api-reference/get-users-id-owned_lists"
+    },
+    {
+      "id": "users/lists/get_pinned_lists",
+      "name": "* Pinned Lists Lookup",
+      "category": "users",
+      "method": "GET",
+      "path": "/users/:id/pinned_lists",
+      "auth": [
+        "oauth2-user"
+      ],
+      "files": {
+        "python": "python/users/lists/get_pinned_lists.py",
+        "typescript": "typescript/users/lists/get_pinned_lists.ts",
+        "javascript": "javascript/users/lists/get_pinned_lists.js",
+        "java": "java/users/lists/GetPinnedLists.java",
+        "csharp": "csharp/users/lists/GetPinnedLists.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/lists/pinned-lists/api-reference/get-users-id-pinned_lists"
+    },
+    {
+      "id": "users/lists/pin_list",
+      "name": "* Pin List",
+      "category": "users",
+      "method": "POST",
+      "path": "/users/:id/pinned_lists",
+      "auth": [
+        "oauth2-user"
+      ],
+      "files": {
+        "python": "python/users/lists/pin_list.py",
+        "typescript": "typescript/users/lists/pin_list.ts",
+        "javascript": "javascript/users/lists/pin_list.js",
+        "java": "java/users/lists/PinList.java",
+        "csharp": "csharp/users/lists/PinList.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/lists/pinned-lists/api-reference/post-users-id-pinned_lists"
+    },
+    {
+      "id": "users/lists/unfollow_list",
+      "name": "* Unfollow List",
+      "category": "users",
+      "method": "DELETE",
+      "path": "/users/:id/followed_lists/:list_id",
+      "auth": [
+        "oauth2-user"
+      ],
+      "files": {
+        "python": "python/users/lists/unfollow_list.py",
+        "typescript": "typescript/users/lists/unfollow_list.ts",
+        "javascript": "javascript/users/lists/unfollow_list.js",
+        "java": "java/users/lists/UnfollowList.java",
+        "csharp": "csharp/users/lists/UnfollowList.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/lists/list-follows/api-reference/delete-users-id-followed_lists-list_id"
+    },
+    {
+      "id": "users/lists/unpin_list",
+      "name": "* Unpin List",
+      "category": "users",
+      "method": "DELETE",
+      "path": "/users/:id/pinned_lists/:list_id",
+      "auth": [
+        "oauth2-user"
+      ],
+      "files": {
+        "python": "python/users/lists/unpin_list.py",
+        "typescript": "typescript/users/lists/unpin_list.ts",
+        "javascript": "javascript/users/lists/unpin_list.js",
+        "java": "java/users/lists/UnpinList.java",
+        "csharp": "csharp/users/lists/UnpinList.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/lists/pinned-lists/api-reference/delete-users-id-pinned_lists-list_id"
+    },
+    {
+      "id": "users/mute/get_muting",
+      "name": "* Muted Users Lookup",
+      "category": "users",
+      "method": "GET",
+      "path": "/users/:id/muting",
+      "auth": [
+        "oauth2-user"
+      ],
+      "files": {
+        "python": "python/users/mute/get_muting.py",
+        "typescript": "typescript/users/mute/get_muting.ts",
+        "javascript": "javascript/users/mute/get_muting.js",
+        "java": "java/users/mute/GetMuting.java",
+        "csharp": "csharp/users/mute/GetMuting.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/users/mutes/api-reference/get-users-muting"
+    },
+    {
+      "id": "users/mute/mute_user",
+      "name": "* Mute User",
+      "category": "users",
+      "method": "POST",
+      "path": "/users/:id/muting",
+      "auth": [
+        "oauth2-user"
+      ],
+      "files": {
+        "python": "python/users/mute/mute_user.py",
+        "typescript": "typescript/users/mute/mute_user.ts",
+        "javascript": "javascript/users/mute/mute_user.js",
+        "java": "java/users/mute/MuteUser.java",
+        "csharp": "csharp/users/mute/MuteUser.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/users/mutes/api-reference/post-users-user_id-muting"
+    },
+    {
+      "id": "users/mute/unmute_user",
+      "name": "* Unmute User",
+      "category": "users",
+      "method": "DELETE",
+      "path": "/users/:source_user_id/muting/:target_user_id",
+      "auth": [
+        "oauth2-user"
+      ],
+      "files": {
+        "python": "python/users/mute/unmute_user.py",
+        "typescript": "typescript/users/mute/unmute_user.ts",
+        "javascript": "javascript/users/mute/unmute_user.js",
+        "java": "java/users/mute/UnmuteUser.java",
+        "csharp": "csharp/users/mute/UnmuteUser.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/users/mutes/api-reference/delete-users-user_id-muting"
+    },
+    {
+      "id": "users/repost/get_reposts_of_me",
+      "name": "* Reposts of Me",
+      "category": "users",
+      "method": "GET",
+      "path": "/users/reposts_of_me",
+      "auth": [
+        "oauth2-user"
+      ],
+      "files": {
+        "python": "python/users/repost/get_reposts_of_me.py",
+        "typescript": "typescript/users/repost/get_reposts_of_me.ts",
+        "javascript": "javascript/users/repost/get_reposts_of_me.js",
+        "java": "java/users/repost/GetRepostsOfMe.java",
+        "csharp": "csharp/users/repost/GetRepostsOfMe.cs"
+      },
+      "docs": "https://docs.x.com/x-api/users/get-reposts-of-me"
+    },
+    {
+      "id": "users/repost/repost_post",
+      "name": "* Repost a Post",
+      "category": "users",
+      "method": "POST",
+      "path": "/users/:id/retweets",
+      "auth": [
+        "oauth2-user"
+      ],
+      "files": {
+        "python": "python/users/repost/repost_post.py",
+        "typescript": "typescript/users/repost/repost_post.ts",
+        "javascript": "javascript/users/repost/repost_post.js",
+        "java": "java/users/repost/RepostPost.java",
+        "csharp": "csharp/users/repost/RepostPost.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/retweets/api-reference/post-users-id-retweets"
+    },
+    {
+      "id": "users/repost/unrepost_post",
+      "name": "* Undo Repost",
+      "category": "users",
+      "method": "DELETE",
+      "path": "/users/:id/retweets/:source_tweet_id",
+      "auth": [
+        "oauth2-user"
+      ],
+      "files": {
+        "python": "python/users/repost/unrepost_post.py",
+        "typescript": "typescript/users/repost/unrepost_post.ts",
+        "javascript": "javascript/users/repost/unrepost_post.js",
+        "java": "java/users/repost/UnrepostPost.java",
+        "csharp": "csharp/users/repost/UnrepostPost.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/retweets/api-reference/delete-users-id-retweets-tweet_id"
+    },
+    {
+      "id": "users/timeline/get_home_timeline",
+      "name": "* Reverse Chronological Home Timeline",
+      "category": "users",
+      "method": "GET",
+      "path": "/users/:id/timelines/reverse_chronological",
+      "auth": [
+        "oauth2-user"
+      ],
+      "files": {
+        "python": "python/users/timeline/get_home_timeline.py",
+        "typescript": "typescript/users/timeline/get_home_timeline.ts",
+        "javascript": "javascript/users/timeline/get_home_timeline.js",
+        "java": "java/users/timeline/GetHomeTimeline.java",
+        "csharp": "csharp/users/timeline/GetHomeTimeline.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/timelines/api-reference/get-users-id-reverse-chronological-timeline"
+    },
+    {
+      "id": "users/timeline/get_mentions",
+      "name": "* User Mentions Timeline",
+      "category": "users",
+      "method": "GET",
+      "path": "/users/:id/mentions",
+      "auth": [
+        "bearer"
+      ],
+      "files": {
+        "python": "python/users/timeline/get_mentions.py",
+        "typescript": "typescript/users/timeline/get_mentions.ts",
+        "javascript": "javascript/users/timeline/get_mentions.js",
+        "java": "java/users/timeline/GetMentions.java",
+        "csharp": "csharp/users/timeline/GetMentions.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/timelines/api-reference/get-users-id-mentions"
+    },
+    {
+      "id": "users/timeline/get_posts",
+      "name": "* User Posts Timeline",
+      "category": "users",
+      "method": "GET",
+      "path": "/users/:id/tweets",
+      "auth": [
+        "bearer"
+      ],
+      "files": {
+        "python": "python/users/timeline/get_posts.py",
+        "typescript": "typescript/users/timeline/get_posts.ts",
+        "javascript": "javascript/users/timeline/get_posts.js",
+        "java": "java/users/timeline/GetPosts.java",
+        "csharp": "csharp/users/timeline/GetPosts.cs"
+      },
+      "docs": "https://developer.x.com/en/docs/twitter-api/tweets/timelines/api-reference/get-users-id-tweets"
+    },
+    {
+      "id": "webhooks/delete_webhook",
+      "name": "* Delete Webhook",
+      "category": "webhooks",
+      "method": "DELETE",
+      "path": "/webhooks/:webhook_id",
+      "auth": [
+        "bearer"
+      ],
+      "files": {
+        "python": "python/webhooks/delete_webhook.py",
+        "typescript": "typescript/webhooks/delete_webhook.ts",
+        "javascript": "javascript/webhooks/delete_webhook.js",
+        "java": "java/webhooks/DeleteWebhook.java",
+        "csharp": "csharp/webhooks/DeleteWebhook.cs"
+      },
+      "docs": "https://docs.x.com/x-api/webhooks/introduction"
+    },
+    {
+      "id": "webhooks/list_webhooks",
+      "name": "* List Webhooks",
+      "category": "webhooks",
+      "method": "GET",
+      "path": "/webhooks",
+      "auth": [
+        "bearer"
+      ],
+      "files": {
+        "python": "python/webhooks/list_webhooks.py",
+        "typescript": "typescript/webhooks/list_webhooks.ts",
+        "javascript": "javascript/webhooks/list_webhooks.js",
+        "java": "java/webhooks/ListWebhooks.java",
+        "csharp": "csharp/webhooks/ListWebhooks.cs"
+      },
+      "docs": "https://docs.x.com/x-api/webhooks/introduction"
+    },
+    {
+      "id": "webhooks/register_webhook",
+      "name": "* Register Webhook",
+      "category": "webhooks",
+      "method": "POST",
+      "path": "/webhooks",
+      "auth": [
+        "bearer"
+      ],
+      "files": {
+        "python": "python/webhooks/register_webhook.py",
+        "typescript": "typescript/webhooks/register_webhook.ts",
+        "javascript": "javascript/webhooks/register_webhook.js",
+        "java": "java/webhooks/RegisterWebhook.java",
+        "csharp": "csharp/webhooks/RegisterWebhook.cs"
+      },
+      "docs": "https://docs.x.com/x-api/webhooks/introduction"
+    },
+    {
+      "id": "webhooks/validate_webhook",
+      "name": "* Validate Webhook (Trigger CRC)",
+      "category": "webhooks",
+      "method": "PUT",
+      "path": "/webhooks/:webhook_id",
+      "auth": [
+        "bearer"
+      ],
+      "files": {
+        "python": "python/webhooks/validate_webhook.py",
+        "typescript": "typescript/webhooks/validate_webhook.ts",
+        "javascript": "javascript/webhooks/validate_webhook.js",
+        "java": "java/webhooks/ValidateWebhook.java",
+        "csharp": "csharp/webhooks/ValidateWebhook.cs"
+      },
+      "docs": "https://docs.x.com/x-api/webhooks/introduction"
+    },
+    {
+      "id": "webhooks/webhook_server",
+      "name": "* Webhook Server (CRC + Event Delivery)",
+      "category": "webhooks",
+      "method": "GET",
+      "path": "",
+      "auth": [
+        "hmac-sha256"
+      ],
+      "files": {
+        "python": "python/webhooks/webhook_server.py",
+        "typescript": "typescript/webhooks/webhook_server.ts",
+        "javascript": "javascript/webhooks/webhook_server.js",
+        "java": "java/webhooks/WebhookServer.java",
+        "csharp": "csharp/webhooks/WebhookServer.cs"
+      },
+      "docs": "https://docs.x.com/x-api/webhooks/introduction"
     }
   ]
 }

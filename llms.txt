@@ -1,156 +1,65 @@
 # X API v2 Sample Code Repository
 
-> This file provides context for LLMs (Large Language Models) to understand and navigate this codebase.
+> Context file for LLMs and AI coding agents navigating `xdevplatform/samples`.
 
-## Purpose
+## Official XDK Packages Used
 
-This repository contains working code examples for the X (formerly Twitter) API v2. Examples are provided in Python, JavaScript (Node.js), Ruby, and Java.
+All primary SDK sample suites use the official first-party **XDK** libraries generated from `https://api.x.com/2/openapi.json`:
 
-## Repository Structure
+| Language | Directory | Package | Install | Run / Typecheck |
+|---|---|---|---|---|
+| Python 3.10+ | `python/` (80 files) | `xdk` (PyPI) | `pip install xdk` | `python posts/search_recent.py` |
+| TypeScript (Node 18+ ESM) | `typescript/` (84 files) | `@xdevplatform/xdk` (npm) | `cd typescript && npm install` | `npx tsx posts/search_recent.ts` / `npm run typecheck` |
+| JavaScript (Node 18+ CJS) | `javascript/` (84 files) | `@xdevplatform/xdk` (npm) | `cd javascript && npm install` | `node posts/search_recent.js` |
+| Java 17+ | `java/` (80 files) | `com.x:xdk` (Maven Central) | `cd java && mvn compile` | `mvn compile exec:java -Dexec.mainClass="posts.SearchRecent"` |
+| C# / .NET 8+ | `csharp/` (80 files) | `XDevPlatform.Xdk` (NuGet) | `cd csharp && dotnet build` | `dotnet run -- posts/search_recent` |
 
-```
-/
-├── python/           # Python examples
-│   ├── posts/        # Create, delete, search, lookup posts
-│   ├── users/        # User lookup, followers, blocks, mutes
-│   ├── timelines/    # User posts, mentions, home timeline
-│   ├── streams/      # Filtered and sampled streams
-│   ├── bookmarks/    # Bookmark management
-│   ├── spaces/       # Spaces lookup and search
-│   ├── lists/        # List management
-│   ├── direct_messages/  # DM lookup and sending
-│   ├── media/        # Media upload
-│   ├── compliance/   # Batch compliance jobs
-│   └── usage/        # API usage stats
-├── javascript/       # JavaScript (Node.js) examples
-├── ruby/             # Ruby examples
-├── java/             # Java examples
-└── docs/             # Endpoint documentation (language-agnostic)
-```
+Additional community/HTTP samples are available in `ruby/` (58 files) and `r/` (5 files).
 
-## File Naming Conventions
+## File Naming & Directory Layout
 
-- Python: `snake_case.py` (e.g., `create_post.py`)
-- JavaScript: `snake_case.js` (e.g., `create_post.js`)
-- Ruby: `snake_case.rb` (e.g., `search_recent.rb`)
-- Java: `PascalCase.java` (e.g., `SearchRecent.java`)
+Every XDK language mirrors the same 11 top-level endpoint categories:
 
-## Authentication Types
+- `activity/` — `create_subscription`, `delete_subscription`, `list_subscriptions`, `stream_events`, `update_subscription`
+- `compliance/` — `create_jobs`, `download_results`, `get_jobs`, `get_jobs_by_id`, `upload_ids`
+- `direct_messages/` — `get_events_by_conversation`, `get_one_to_one_conversation_events`, `get_user_conversation_events`, `post_dm_to_conversation`, `post_group_conversation_dm`, `post_one_to_one_dm`
+- `lists/` — `add_member`, `create_list`, `delete_list`, `get_list_by_id`, `get_list_followers`, `get_list_members`, `get_list_posts`, `remove_member`, `update_list`
+- `media/` — `upload`, `media_upload_v2`
+- `posts/` — `create_post`, `delete_post`, `get_liking_users`, `get_post_by_id`, `get_post_counts_all`, `get_post_counts_recent`, `get_posts_by_ids`, `get_quoted_posts`, `get_reposted_by`, `hide_reply`, `search_all`, `search_recent`
+- `spaces/` — `get_spaces_by_ids`, `search_spaces`
+- `streams/` — `stream_posts_filtered`, `stream_posts_sample`
+- `usage/` — `get_usage`
+- `users/` — `get_users_by_usernames`, `get_users_by_usernames_user_context`, `get_users_me`, plus `block/`, `bookmark/`, `follow/`, `like/`, `lists/`, `mute/`, `repost/`, `timeline/`
+- `webhooks/` — `delete_webhook`, `list_webhooks`, `register_webhook`, `validate_webhook`, `webhook_server`
 
-1. **Bearer Token** (App-only): For read-only endpoints that don't require user context
-   - Env var: `BEARER_TOKEN`
-   
-2. **OAuth 1.0a** (User Context): For endpoints that act on behalf of a user
-   - Env vars: `CONSUMER_KEY`, `CONSUMER_SECRET`
-   
-3. **OAuth 2.0 with PKCE** (User Context): For newer endpoints like bookmarks
-   - Requires OAuth 2.0 flow to get user access token
+Naming conventions per language:
+- **Python**: `snake_case.py` (e.g., `python/posts/search_recent.py`)
+- **TypeScript**: `snake_case.ts` ESM with strict `tsconfig.json` (e.g., `typescript/posts/search_recent.ts`)
+- **JavaScript**: `snake_case.js` CommonJS (e.g., `javascript/posts/search_recent.js`)
+- **Java**: `PascalCase.java` with matching package declarations (e.g., `java/posts/SearchRecent.java`, `package posts;`)
+- **C#**: `PascalCase.cs` with `Samples.<Category>` namespaces and `SamplesRunner` CLI in `csharp/Program.cs` (e.g., `csharp/posts/SearchRecent.cs`)
 
-## API Base URL
+## SDK Idioms Across Languages
 
-All endpoints use: `https://api.x.com/2/`
+### 1. Client Initialization (Bearer Token)
+- **Python**: `from xdk import Client; client = Client(bearer_token=os.environ["BEARER_TOKEN"])`
+- **TypeScript**: `import { Client } from '@xdevplatform/xdk'; const client = new Client({ bearerToken: process.env.BEARER_TOKEN });`
+- **JavaScript**: `const { Client } = require('@xdevplatform/xdk'); const client = new Client({ bearerToken: process.env.BEARER_TOKEN });`
+- **Java**: `XClient client = new XClient(XClientConfig.builder().bearerToken(bearerToken).build());`
+- **C#**: `using var client = new XClient(new XClientOptions { BearerToken = bearerToken });`
 
-## Key Terminology (Rebrand)
+### 2. Cursor Pagination
+- **Python**: `for page in client.posts.search_recent(query="...", max_results=100): ...`
+- **TypeScript / JavaScript**: `const paginator = new PostPaginator(async (token?: string) => client.posts.searchRecent(query, { maxResults: 100, nextToken: token })); for await (const post of paginator) { ... }`
+- **Java**: `for (var page : client.posts().searchRecentPages(query, options)) { ... }`
+- **C#**: `await foreach (var page in client.Posts.SearchRecentPages(query, options)) { ... }`
 
-| Old Term | New Term |
-|----------|----------|
-| Tweet | Post |
-| Retweet | Repost |
-| Twitter | X |
-| TwitterDev | XDevelopers |
+### 3. Real-Time Streaming
+- **Python**: `for event in client.stream.posts(tweet_fields=["id", "text"]): ...`
+- **TypeScript / JavaScript**: `const stream = await client.stream.posts({ tweetFields: ['id', 'text'] }); stream.on('data', console.log);`
+- **Java**: `try (var stream = client.stream().posts(options)) { for (var event : stream) { ... } }`
+- **C#**: `await using var stream = client.Stream.PostsStream(options); await foreach (var event in stream) { ... }`
 
-Note: The API endpoints still use `/tweets/` in the URL path for backwards compatibility.
+## Machine-Readable Index
 
-## Common Operations by Category
-
-### Posts (formerly Tweets)
-- `POST /2/tweets` - Create a post
-- `DELETE /2/tweets/:id` - Delete a post
-- `GET /2/tweets` - Look up posts by ID
-- `GET /2/tweets/search/recent` - Search recent posts (7 days)
-- `GET /2/tweets/search/all` - Search all posts (Academic access)
-- `GET /2/tweets/counts/recent` - Count recent posts
-- `GET /2/tweets/:id/quote_tweets` - Get quote posts
-- `POST /2/users/:id/retweets` - Repost
-- `DELETE /2/users/:id/retweets/:tweet_id` - Undo repost
-
-### Users
-- `GET /2/users/by` - Look up users by username
-- `GET /2/users/me` - Get authenticated user
-- `GET /2/users/:id/followers` - Get followers
-- `GET /2/users/:id/following` - Get following
-- `POST /2/users/:id/blocking` - Block user
-- `POST /2/users/:id/muting` - Mute user
-
-### Timelines
-- `GET /2/users/:id/tweets` - User's posts
-- `GET /2/users/:id/mentions` - User's mentions
-- `GET /2/users/:id/reverse_chronological_timeline` - Home timeline
-
-### Streams (Real-time)
-- `GET /2/tweets/search/stream` - Filtered stream
-- `GET /2/tweets/sample/stream` - 1% sampled stream
-
-### Likes
-- `POST /2/users/:id/likes` - Like a post
-- `DELETE /2/users/:id/likes/:tweet_id` - Unlike a post
-- `GET /2/tweets/:id/liking_users` - Users who liked
-- `GET /2/users/:id/liked_tweets` - Posts user liked
-
-### Bookmarks
-- `GET /2/users/:id/bookmarks` - Get bookmarks
-- `POST /2/users/:id/bookmarks` - Create bookmark
-- `DELETE /2/users/:id/bookmarks/:tweet_id` - Delete bookmark
-
-### Lists
-- `GET /2/lists/:id` - Look up list
-- `POST /2/lists` - Create list
-- `DELETE /2/lists/:id` - Delete list
-
-### Spaces
-- `GET /2/spaces` - Look up Spaces by ID
-- `GET /2/spaces/search` - Search Spaces
-
-### Direct Messages
-- `GET /2/dm_events` - Get DM events
-- `POST /2/dm_conversations/with/:participant_id/messages` - Send DM
-
-## Quick Start
-
-1. Get API credentials at https://developer.x.com/portal
-2. Set environment variables:
-   ```bash
-   export BEARER_TOKEN='your_token'
-   export CONSUMER_KEY='your_key'
-   export CONSUMER_SECRET='your_secret'
-   ```
-3. Navigate to desired language folder
-4. Install dependencies (see language-specific README)
-5. Run example
-
-## Dependencies by Language
-
-### Python
-```bash
-pip install requests requests-oauthlib
-```
-
-### JavaScript
-```bash
-npm install needle got oauth-1.0a
-```
-
-### Ruby
-```bash
-gem install typhoeus oauth
-```
-
-### Java
-- Apache HttpClient 4.5+
-- Gson 2.9+
-
-## External Resources
-
-- API Documentation: https://developer.x.com/en/docs/twitter-api
-- Developer Portal: https://developer.x.com/en/portal/dashboard
-- API Reference: https://developer.x.com/en/docs/api-reference-index
+See `api-index.json` at the repository root for an exact JSON mapping from every sample slug, HTTP method, and `/2/*` endpoint path to the corresponding files across `python`, `typescript`, `javascript`, `java`, `csharp`, `ruby`, and `r`.

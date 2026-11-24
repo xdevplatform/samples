@@ -1,7 +1,7 @@
 """
 Media Upload - X API v2
 =======================
-Endpoint: POST https://upload.x.com/1.1/media/upload.json
+Endpoint: POST https://api.x.com/2/media/upload
 Docs: https://developer.x.com/en/docs/twitter-api/media/upload-media/api-reference
 
 Authentication: OAuth 2.0 (User Context)
@@ -27,7 +27,7 @@ client_secret = os.environ.get("CLIENT_SECRET")
 redirect_uri = "https://example.com"
 
 # Set the scopes
-scopes = ["tweet.read", "tweet.write", "users.read", "offline.access"]
+scopes = ["media.write", "tweet.read", "tweet.write", "users.read", "offline.access"]
 
 # Path to the media file you want to upload
 media_path = "path/to/your/image.jpg"
@@ -60,13 +60,13 @@ def main():
     with open(media_path, "rb") as media_file:
         media_data = base64.b64encode(media_file.read()).decode("utf-8")
     
-    payload = {"media_data": media_data}
-    response = client.media.upload_media(body=payload)
+    payload = {"media": media_data, "media_category": "tweet_image"}
+    response = client.media.upload(body=payload)
     
     print("Response code: 200")
     
-    # Get the media_id to use when creating a post
-    media_id = response.data["media_id_string"]
+    # Get the media id to use when creating a post
+    media_id = response.data["id"]
     print("Media ID: {}".format(media_id))
     print(json.dumps(response.data, indent=4, sort_keys=True))
     

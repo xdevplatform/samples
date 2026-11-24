@@ -92,7 +92,7 @@ const getQueryStringParams = (query) => {
     });
 
     // Make the request using SDK
-    const response = await client.users.pinList(userId, {list_id: listId});
+    const response = await client.users.pinList(userId, { listId });
     console.dir(response, {
       depth: null,
     });

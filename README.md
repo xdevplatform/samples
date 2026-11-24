@@ -2,100 +2,110 @@
 
 [![X API v2](https://img.shields.io/endpoint?url=https%3A%2F%2Ftwbadges.glitch.me%2Fbadges%2Fv2)](https://developer.x.com/en/docs/twitter-api)
 
-Working code samples for the **X API v2** in Python, JavaScript, Ruby, Java, and R.
+Official sample code for the **X API v2** across **Python**, **TypeScript**, **JavaScript**, **Java**, **C# / .NET**, **Ruby**, and **R**.
 
-## 📁 Repository Structure
+First-party SDK samples use the official **XDK** libraries:
+- **Python**: [`xdk`](https://pypi.org/project/xdk/) ([`xdevplatform/xdk-python`](https://github.com/xdevplatform/xdk-python))
+- **TypeScript / JavaScript**: [`@xdevplatform/xdk`](https://www.npmjs.com/package/@xdevplatform/xdk) ([`xdevplatform/xdk-typescript`](https://github.com/xdevplatform/xdk-typescript))
+- **Java**: [`com.x:xdk`](https://central.sonatype.com/artifact/com.x/xdk) ([`xdevplatform/xdk-java`](https://github.com/xdevplatform/xdk-java))
+- **C# / .NET**: [`XDevPlatform.Xdk`](https://www.nuget.org/packages/XDevPlatform.Xdk) ([`xdevplatform/xdk-csharp`](https://github.com/xdevplatform/xdk-csharp))
+
+## Repository Structure
 
 ```
-├── python/           # 65 Python examples
-├── javascript/       # 59 JavaScript examples  
-├── ruby/             # 58 Ruby examples
-├── java/             # 19 Java examples
-├── r/                # 5 R examples
-├── llms.txt          # LLM-friendly documentation
-└── api-index.json    # Machine-readable endpoint catalog
+├── python/           # 80 Python samples (xdk)
+├── typescript/       # 84 TypeScript ESM samples (@xdevplatform/xdk, strict tsc)
+├── javascript/       # 84 JavaScript / Node.js CommonJS samples (@xdevplatform/xdk)
+├── java/             # 80 Java 17+ samples (com.x:xdk)
+├── csharp/           # 80 C# / .NET 8+ samples (XDevPlatform.Xdk)
+├── ruby/             # 58 Ruby samples
+├── r/                # 5 R samples
+├── llms.txt          # LLM-friendly documentation & SDK conventions
+└── api-index.json    # Machine-readable endpoint-to-sample catalog
 ```
 
-## 🚀 Quick Start
+## Quick Start
 
 ### 1. Get API Credentials
 
-Sign up at the [X Developer Portal](https://developer.x.com/en/portal/dashboard).
+Sign up and create an App in the [X Developer Console](https://console.x.com).
 
 ### 2. Set Environment Variables
 
-**For read-only operations (search, lookup):**
+**For App-only read operations (search, lookup, streams, webhooks, activity):**
 ```bash
 export BEARER_TOKEN='your_bearer_token'
 ```
 
-**For user actions (post, like, repost, bookmark, etc.):**
+**For User-context actions (post, like, repost, bookmark, DMs, media upload, etc.):**
 ```bash
-export CLIENT_ID='your_client_id'
-export CLIENT_SECRET='your_client_secret'
-```
-
-**For OAuth 1.0a (legacy endpoints):**
-```bash
-export CONSUMER_KEY='your_consumer_key'
-export CONSUMER_SECRET='your_consumer_secret'
+export CLIENT_ID='your_oauth2_client_id'
+export CLIENT_SECRET='your_oauth2_client_secret'
 ```
 
 ### 3. Run an Example
 
 ```bash
-# Python
-cd python && pip install -r requirements.txt
+# Python (xdk)
+cd python && pip install xdk
 python posts/search_recent.py
 
-# JavaScript  
-cd javascript
+# TypeScript (@xdevplatform/xdk)
+cd typescript && npm install
+npx tsx posts/search_recent.ts
+
+# JavaScript / Node.js (@xdevplatform/xdk)
+cd javascript && npm install
 node posts/search_recent.js
+
+# Java 17+ (com.x:xdk)
+cd java
+mvn compile exec:java -Dexec.mainClass="posts.SearchRecent"
+
+# C# / .NET 8+ (XDevPlatform.Xdk)
+cd csharp
+dotnet run -- posts/search_recent
 
 # Ruby
 cd ruby && bundle install
 ruby posts/search_recent.rb
-
-# Java
-cd java
-javac -cp ".:lib/*" posts/RecentSearchDemo.java
-java -cp ".:lib/*" RecentSearchDemo
 ```
 
-## 📚 Examples by Category
+## Coverage by Category
 
-| Category | Python | JavaScript | Ruby | Java | R |
-|----------|--------|------------|------|------|---|
-| Posts (search, create, delete, likes, reposts) | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Users (lookup, followers, following, blocks, mutes) | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Timelines (user, mentions, home) | ✅ | ✅ | ✅ | ✅ | |
-| Streams (filtered, sampled) | ✅ | ✅ | ✅ | ✅ | |
-| Lists (lookup, manage, members, follow) | ✅ | ✅ | ✅ | | |
-| Spaces (lookup, search) | ✅ | ✅ | ✅ | ✅ | |
-| Bookmarks | ✅ | ✅ | ✅ | | |
-| Direct Messages | ✅ | | | | |
-| Media Upload | ✅ | | | | |
-| Compliance | ✅ | ✅ | | | |
-| Usage | ✅ | ✅ | | ✅ | |
+| Category | Python (`xdk`) | TypeScript (`@xdevplatform/xdk`) | JavaScript (`@xdevplatform/xdk`) | Java (`com.x:xdk`) | C# (`XDevPlatform.Xdk`) | Ruby | R |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| Activity (subscriptions & stream) | ✅ | ✅ | ✅ | ✅ | ✅ | | |
+| Compliance (batch jobs) | ✅ | ✅ | ✅ | ✅ | ✅ | | |
+| Direct Messages (1:1 & group DMs) | ✅ | ✅ | ✅ | ✅ | ✅ | | |
+| Lists (CRUD, members, followers, posts) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | |
+| Media Upload (single & chunked v2) | ✅ | ✅ | ✅ | ✅ | ✅ | | |
+| Posts (search, counts, create, delete, hide reply, quotes) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Spaces (lookup & search) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | |
+| Streams (filtered rules & 1% sampled) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | |
+| Usage (daily Post usage) | ✅ | ✅ | ✅ | ✅ | ✅ | | |
+| Users (lookup, timelines, likes, bookmarks, follows, mutes, blocks, reposts) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Webhooks (register, list, validate CRC, delete, server) | ✅ | ✅ | ✅ | ✅ | ✅ | | |
 
-## 🔐 Authentication
+## Authentication
 
 | Type | Use Case | Env Vars |
 |------|----------|----------|
-| Bearer Token | Read-only (search, lookup) | `BEARER_TOKEN` |
-| OAuth 2.0 PKCE | User actions (post, like, repost, bookmark, mute, etc.) | `CLIENT_ID`, `CLIENT_SECRET` |
-| OAuth 1.0a | Legacy endpoints (if applicable) | `CONSUMER_KEY`, `CONSUMER_SECRET` |
+| Bearer Token | App-only endpoints (search, lookup, streams, webhooks, activity) | `BEARER_TOKEN` |
+| OAuth 2.0 PKCE | User-context actions (post, like, repost, bookmark, mute, follow, DMs, media) | `CLIENT_ID`, `CLIENT_SECRET` (or `ACCESS_TOKEN`) |
+| Webhook HMAC | Webhook CRC verification (`webhook_server`) | `CONSUMER_SECRET` |
 
-## 🤖 For LLMs
+## For LLMs & Tooling
 
-- **`llms.txt`** - Context file for AI assistants
-- **`api-index.json`** - Machine-readable endpoint catalog
+- **`llms.txt`** - Concise context file covering SDK packages, auth patterns, pagination, and streaming across all languages
+- **`api-index.json`** - Machine-readable catalog mapping every endpoint to its exact file path in `python/`, `typescript/`, `javascript/`, `java/`, `csharp/`, `ruby/`, and `r/`
 
-## 🔗 Resources
+## Resources
 
-- [X API Documentation](https://developer.x.com/en/docs/twitter-api)
-- [Developer Portal](https://developer.x.com/en/portal/dashboard)
+- [X Developer Documentation](https://docs.x.com)
+- [X Developer Console](https://console.x.com)
+- [XDK Generator Monorepo (`xdevplatform/xdk`)](https://github.com/xdevplatform/xdk)
 
-## 📄 License
+## License
 
 Apache 2.0

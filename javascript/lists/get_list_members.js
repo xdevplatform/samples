@@ -13,8 +13,8 @@ const id = "list-id";
     // These are the parameters for the API request
     // by default, only the User ID and name are returned
     const response = await client.lists.getMembers(id, {
-      userFields: ['pinned_tweet_id', 'created_at'], // Edit optional query parameters here
-      expansions: ['pinned_tweet_id'], // expansions is used to include the Post object
+      userFields: ['created_at', 'description'], // Edit optional query parameters here
+      expansions: ['pinned_post_id'], // expansions is used to include the Post object
       tweetFields: ['created_at'] // Edit optional query parameters here
     });
     

@@ -85,7 +85,7 @@ const getQueryStringParams = (query) => {
     // Make the request using SDK - get authenticated user
     const response = await client.users.getMe({
       userFields: ['created_at', 'description'],
-      expansions: ['pinned_tweet_id']
+      expansions: ['pinned_post_id']
     });
     
     console.dir(response, {

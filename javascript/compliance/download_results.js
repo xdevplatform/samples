@@ -1,5 +1,5 @@
 // Replace with your job download_url
-downloadUrl = ''
+const downloadUrl = '';
 
 async function getRequest() {
     const res = await fetch(downloadUrl, {
