@@ -6,15 +6,13 @@ const { Client } = require('@xdevplatform/xdk');
 const token = process.env.BEARER_TOKEN;
 const client = new Client({ bearerToken: token });
 
-// For User Compliance job, replace the value for type with users
-const params = {
-    type: "tweets"
-};
+// For User Compliance job, replace "tweets" with "users"
+const jobType = "tweets";
 
 (async () => {
     try {
         // Make request
-        const response = await client.compliance.getJobs(params);
+        const response = await client.compliance.getJobs(jobType);
         
         console.dir(response, {
             depth: null

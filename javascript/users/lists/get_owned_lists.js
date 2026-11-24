@@ -13,7 +13,7 @@ const id = "user-id";
     // These are the parameters for the API request
     // by default, only the List ID and name are returned
     const response = await client.users.getOwnedLists(id, {
-      listFields: ['owner_id'], // Edit optional query parameters here
+      listFields: ['created_at', 'description', 'follower_count'], // Edit optional query parameters here
       expansions: ['owner_id'], // expansions is used to include the user object
       userFields: ['created_at', 'verified'] // Edit optional query parameters here
     });

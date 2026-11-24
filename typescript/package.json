@@ -1,0 +1,21 @@
+{
+  "name": "x-api-v2-typescript-samples",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Official TypeScript sample code for the X API v2 powered by @xdevplatform/xdk",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@xdevplatform/xdk": "^0.7.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0"
+  }
+}

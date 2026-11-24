@@ -19,7 +19,8 @@ const spaceIds = ['1DXxyRYNejbKM'];
     try {
         // Replace with Space IDs you want to look up
         const response = await client.spaces.getByIds(spaceIds, {
-            spaceFields: ['host_ids', 'created_at', 'creator_id', 'participant_count', 'title', 'state']
+            spaceFields: ['created_at', 'participant_count', 'title', 'state'],
+            expansions: ['creator_id', 'host_ids']
         });
         
         console.dir(response, { depth: null });

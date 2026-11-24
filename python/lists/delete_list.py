@@ -55,7 +55,7 @@ def main():
     client = Client(access_token=access_token)
     
     # Step 6: Delete the list
-    response = client.lists.delete_list(list_id)
+    response = client.lists.delete(list_id)
     
     print("Response code: 200")
     print(json.dumps(response.data, indent=4, sort_keys=True))

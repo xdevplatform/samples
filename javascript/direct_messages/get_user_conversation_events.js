@@ -78,7 +78,8 @@ async function createUserClient(scopes) {
     const res = await client.directMessages.getEvents({
       maxResults: 100,
       paginationToken: token,
-      dmEventFields: ['id', 'text', 'event_type', 'created_at', 'sender_id'],
+      dmEventFields: ['id', 'text', 'event_type', 'created_at', 'dm_conversation_id'],
+      expansions: ['sender_id'],
     });
     return {
       data: res.data ?? [],

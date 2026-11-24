@@ -4,12 +4,13 @@
 
 ## Official XDK Packages Used
 
-All four primary SDK sample suites use the official first-party **XDK** libraries generated from `https://api.x.com/2/openapi.json`:
+All primary SDK sample suites use the official first-party **XDK** libraries generated from `https://api.x.com/2/openapi.json`:
 
-| Language | Directory | Package | Install | Run |
+| Language | Directory | Package | Install | Run / Typecheck |
 |---|---|---|---|---|
 | Python 3.10+ | `python/` (80 files) | `xdk` (PyPI) | `pip install xdk` | `python posts/search_recent.py` |
-| JavaScript (Node 18+) | `javascript/` (84 files) | `@xdevplatform/xdk` (npm) | `cd javascript && npm install` | `node posts/search_recent.js` |
+| TypeScript (Node 18+ ESM) | `typescript/` (84 files) | `@xdevplatform/xdk` (npm) | `cd typescript && npm install` | `npx tsx posts/search_recent.ts` / `npm run typecheck` |
+| JavaScript (Node 18+ CJS) | `javascript/` (84 files) | `@xdevplatform/xdk` (npm) | `cd javascript && npm install` | `node posts/search_recent.js` |
 | Java 17+ | `java/` (80 files) | `com.x:xdk` (Maven Central) | `cd java && mvn compile` | `mvn compile exec:java -Dexec.mainClass="posts.SearchRecent"` |
 | C# / .NET 8+ | `csharp/` (80 files) | `XDevPlatform.Xdk` (NuGet) | `cd csharp && dotnet build` | `dotnet run -- posts/search_recent` |
 
@@ -33,7 +34,8 @@ Every XDK language mirrors the same 11 top-level endpoint categories:
 
 Naming conventions per language:
 - **Python**: `snake_case.py` (e.g., `python/posts/search_recent.py`)
-- **JavaScript**: `snake_case.js` (e.g., `javascript/posts/search_recent.js`)
+- **TypeScript**: `snake_case.ts` ESM with strict `tsconfig.json` (e.g., `typescript/posts/search_recent.ts`)
+- **JavaScript**: `snake_case.js` CommonJS (e.g., `javascript/posts/search_recent.js`)
 - **Java**: `PascalCase.java` with matching package declarations (e.g., `java/posts/SearchRecent.java`, `package posts;`)
 - **C#**: `PascalCase.cs` with `Samples.<Category>` namespaces and `SamplesRunner` CLI in `csharp/Program.cs` (e.g., `csharp/posts/SearchRecent.cs`)
 
@@ -41,22 +43,23 @@ Naming conventions per language:
 
 ### 1. Client Initialization (Bearer Token)
 - **Python**: `from xdk import Client; client = Client(bearer_token=os.environ["BEARER_TOKEN"])`
+- **TypeScript**: `import { Client } from '@xdevplatform/xdk'; const client = new Client({ bearerToken: process.env.BEARER_TOKEN });`
 - **JavaScript**: `const { Client } = require('@xdevplatform/xdk'); const client = new Client({ bearerToken: process.env.BEARER_TOKEN });`
 - **Java**: `XClient client = new XClient(XClientConfig.builder().bearerToken(bearerToken).build());`
 - **C#**: `using var client = new XClient(new XClientOptions { BearerToken = bearerToken });`
 
 ### 2. Cursor Pagination
 - **Python**: `for page in client.posts.search_recent(query="...", max_results=100): ...`
-- **JavaScript**: `const paginator = new PostPaginator(async (token) => client.posts.searchRecent(query, { maxResults: 100, nextToken: token })); for await (const post of paginator) { ... }`
+- **TypeScript / JavaScript**: `const paginator = new PostPaginator(async (token?: string) => client.posts.searchRecent(query, { maxResults: 100, nextToken: token })); for await (const post of paginator) { ... }`
 - **Java**: `for (var page : client.posts().searchRecentPages(query, options)) { ... }`
 - **C#**: `await foreach (var page in client.Posts.SearchRecentPages(query, options)) { ... }`
 
 ### 3. Real-Time Streaming
 - **Python**: `for event in client.stream.posts(tweet_fields=["id", "text"]): ...`
-- **JavaScript**: `const stream = await client.stream.posts({ tweetFields: ['id', 'text'] }); stream.on('data', console.log);`
+- **TypeScript / JavaScript**: `const stream = await client.stream.posts({ tweetFields: ['id', 'text'] }); stream.on('data', console.log);`
 - **Java**: `try (var stream = client.stream().posts(options)) { for (var event : stream) { ... } }`
 - **C#**: `await using var stream = client.Stream.PostsStream(options); await foreach (var event in stream) { ... }`
 
 ## Machine-Readable Index
 
-See `api-index.json` at the repository root for an exact JSON mapping from every sample slug, HTTP method, and `/2/*` endpoint path to the corresponding files across `python`, `javascript`, `java`, `csharp`, `ruby`, and `r`.
+See `api-index.json` at the repository root for an exact JSON mapping from every sample slug, HTTP method, and `/2/*` endpoint path to the corresponding files across `python`, `typescript`, `javascript`, `java`, `csharp`, `ruby`, and `r`.

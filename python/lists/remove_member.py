@@ -58,7 +58,7 @@ def main():
     client = Client(access_token=access_token)
     
     # Step 6: Remove member from list
-    response = client.lists.remove_member(list_id, user_id)
+    response = client.lists.remove_member_by_user_id(list_id, user_id)
     
     print("Response code: 200")
     print(json.dumps(response.data, indent=4, sort_keys=True))

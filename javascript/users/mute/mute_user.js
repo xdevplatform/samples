@@ -93,7 +93,7 @@ const getQueryStringParams = (query) => {
     });
 
     // Make the request using SDK
-    const response = await client.users.muteUser(userId, { body: { target_user_id: targetUserId } });
+    const response = await client.users.muteUser(userId, { targetUserId });
     console.dir(response, {
       depth: null
     });

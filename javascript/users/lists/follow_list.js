@@ -92,7 +92,7 @@ const getQueryStringParams = (query) => {
     });
 
     // Make the request using SDK
-    const response = await client.users.followList(userId, {body: {list_id: listId}});
+    const response = await client.users.followList(userId, { listId });
     console.dir(response, {
       depth: null,
     });

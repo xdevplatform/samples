@@ -19,7 +19,8 @@ const listId = "84839422";
 (async () => {
     try {
         const response = await client.lists.getById(listId, {
-            listFields: ['created_at', 'follower_count', 'member_count', 'owner_id', 'description']
+            listFields: ['created_at', 'follower_count', 'member_count', 'description'],
+            expansions: ['owner_id']
         });
         
         console.dir(response, { depth: null });

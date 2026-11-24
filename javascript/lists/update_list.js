@@ -96,7 +96,7 @@ const getQueryStringParams = (query) => {
     });
 
     // Make the request using SDK
-    const response = await client.lists.update(targetListId, { body: data });
+    const response = await client.lists.update(targetListId, data);
     console.dir(response, {
       depth: null,
     });

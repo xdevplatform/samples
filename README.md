@@ -2,11 +2,11 @@
 
 [![X API v2](https://img.shields.io/endpoint?url=https%3A%2F%2Ftwbadges.glitch.me%2Fbadges%2Fv2)](https://developer.x.com/en/docs/twitter-api)
 
-Official sample code for the **X API v2** across **Python**, **JavaScript / TypeScript**, **Java**, **C# / .NET**, **Ruby**, and **R**.
+Official sample code for the **X API v2** across **Python**, **TypeScript**, **JavaScript**, **Java**, **C# / .NET**, **Ruby**, and **R**.
 
 First-party SDK samples use the official **XDK** libraries:
 - **Python**: [`xdk`](https://pypi.org/project/xdk/) ([`xdevplatform/xdk-python`](https://github.com/xdevplatform/xdk-python))
-- **JavaScript / TypeScript**: [`@xdevplatform/xdk`](https://www.npmjs.com/package/@xdevplatform/xdk) ([`xdevplatform/xdk-typescript`](https://github.com/xdevplatform/xdk-typescript))
+- **TypeScript / JavaScript**: [`@xdevplatform/xdk`](https://www.npmjs.com/package/@xdevplatform/xdk) ([`xdevplatform/xdk-typescript`](https://github.com/xdevplatform/xdk-typescript))
 - **Java**: [`com.x:xdk`](https://central.sonatype.com/artifact/com.x/xdk) ([`xdevplatform/xdk-java`](https://github.com/xdevplatform/xdk-java))
 - **C# / .NET**: [`XDevPlatform.Xdk`](https://www.nuget.org/packages/XDevPlatform.Xdk) ([`xdevplatform/xdk-csharp`](https://github.com/xdevplatform/xdk-csharp))
 
@@ -14,7 +14,8 @@ First-party SDK samples use the official **XDK** libraries:
 
 ```
 ├── python/           # 80 Python samples (xdk)
-├── javascript/       # 84 JavaScript / Node.js samples (@xdevplatform/xdk)
+├── typescript/       # 84 TypeScript ESM samples (@xdevplatform/xdk, strict tsc)
+├── javascript/       # 84 JavaScript / Node.js CommonJS samples (@xdevplatform/xdk)
 ├── java/             # 80 Java 17+ samples (com.x:xdk)
 ├── csharp/           # 80 C# / .NET 8+ samples (XDevPlatform.Xdk)
 ├── ruby/             # 58 Ruby samples
@@ -49,6 +50,10 @@ export CLIENT_SECRET='your_oauth2_client_secret'
 cd python && pip install xdk
 python posts/search_recent.py
 
+# TypeScript (@xdevplatform/xdk)
+cd typescript && npm install
+npx tsx posts/search_recent.ts
+
 # JavaScript / Node.js (@xdevplatform/xdk)
 cd javascript && npm install
 node posts/search_recent.js
@@ -68,19 +73,19 @@ ruby posts/search_recent.rb
 
 ## Coverage by Category
 
-| Category | Python (`xdk`) | JavaScript (`@xdevplatform/xdk`) | Java (`com.x:xdk`) | C# (`XDevPlatform.Xdk`) | Ruby | R |
-|---|:---:|:---:|:---:|:---:|:---:|:---:|
-| Activity (subscriptions & stream) | ✅ | ✅ | ✅ | ✅ | | |
-| Compliance (batch jobs) | ✅ | ✅ | ✅ | ✅ | | |
-| Direct Messages (1:1 & group DMs) | ✅ | ✅ | ✅ | ✅ | | |
-| Lists (CRUD, members, followers, posts) | ✅ | ✅ | ✅ | ✅ | ✅ | |
-| Media Upload (single & chunked v2) | ✅ | ✅ | ✅ | ✅ | | |
-| Posts (search, counts, create, delete, hide reply, quotes) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Spaces (lookup & search) | ✅ | ✅ | ✅ | ✅ | ✅ | |
-| Streams (filtered rules & 1% sampled) | ✅ | ✅ | ✅ | ✅ | ✅ | |
-| Usage (daily Post usage) | ✅ | ✅ | ✅ | ✅ | | |
-| Users (lookup, timelines, likes, bookmarks, follows, mutes, blocks, reposts) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Webhooks (register, list, validate CRC, delete, server) | ✅ | ✅ | ✅ | ✅ | | |
+| Category | Python (`xdk`) | TypeScript (`@xdevplatform/xdk`) | JavaScript (`@xdevplatform/xdk`) | Java (`com.x:xdk`) | C# (`XDevPlatform.Xdk`) | Ruby | R |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| Activity (subscriptions & stream) | ✅ | ✅ | ✅ | ✅ | ✅ | | |
+| Compliance (batch jobs) | ✅ | ✅ | ✅ | ✅ | ✅ | | |
+| Direct Messages (1:1 & group DMs) | ✅ | ✅ | ✅ | ✅ | ✅ | | |
+| Lists (CRUD, members, followers, posts) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | |
+| Media Upload (single & chunked v2) | ✅ | ✅ | ✅ | ✅ | ✅ | | |
+| Posts (search, counts, create, delete, hide reply, quotes) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Spaces (lookup & search) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | |
+| Streams (filtered rules & 1% sampled) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | |
+| Usage (daily Post usage) | ✅ | ✅ | ✅ | ✅ | ✅ | | |
+| Users (lookup, timelines, likes, bookmarks, follows, mutes, blocks, reposts) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Webhooks (register, list, validate CRC, delete, server) | ✅ | ✅ | ✅ | ✅ | ✅ | | |
 
 ## Authentication
 
@@ -93,7 +98,7 @@ ruby posts/search_recent.rb
 ## For LLMs & Tooling
 
 - **`llms.txt`** - Concise context file covering SDK packages, auth patterns, pagination, and streaming across all languages
-- **`api-index.json`** - Machine-readable catalog mapping every endpoint to its exact file path in `python/`, `javascript/`, `java/`, `csharp/`, `ruby/`, and `r/`
+- **`api-index.json`** - Machine-readable catalog mapping every endpoint to its exact file path in `python/`, `typescript/`, `javascript/`, `java/`, `csharp/`, `ruby/`, and `r/`
 
 ## Resources
 

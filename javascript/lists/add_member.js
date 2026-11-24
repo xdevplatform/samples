@@ -92,7 +92,7 @@ const getQueryStringParams = (query) => {
     });
 
     // Make the request using SDK
-    const response = await client.lists.addMember(listId, { body: { user_id: userId } });
+    const response = await client.lists.addMember(listId, { userId });
     console.dir(response, {
       depth: null,
     });

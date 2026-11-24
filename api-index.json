@@ -8,6 +8,11 @@
       "registry": "https://pypi.org/project/xdk/",
       "repo": "https://github.com/xdevplatform/xdk-python"
     },
+    "typescript": {
+      "package": "@xdevplatform/xdk",
+      "registry": "https://www.npmjs.com/package/@xdevplatform/xdk",
+      "repo": "https://github.com/xdevplatform/xdk-typescript"
+    },
     "javascript": {
       "package": "@xdevplatform/xdk",
       "registry": "https://www.npmjs.com/package/@xdevplatform/xdk",
@@ -26,6 +31,7 @@
   },
   "languages": [
     "python",
+    "typescript",
     "javascript",
     "java",
     "csharp",
@@ -44,6 +50,7 @@
       ],
       "files": {
         "python": "python/activity/create_subscription.py",
+        "typescript": "typescript/activity/create_subscription.ts",
         "javascript": "javascript/activity/create_subscription.js",
         "java": "java/activity/CreateSubscription.java",
         "csharp": "csharp/activity/CreateSubscription.cs"
@@ -61,6 +68,7 @@
       ],
       "files": {
         "python": "python/activity/delete_subscription.py",
+        "typescript": "typescript/activity/delete_subscription.ts",
         "javascript": "javascript/activity/delete_subscription.js",
         "java": "java/activity/DeleteSubscription.java",
         "csharp": "csharp/activity/DeleteSubscription.cs"
@@ -78,6 +86,7 @@
       ],
       "files": {
         "python": "python/activity/list_subscriptions.py",
+        "typescript": "typescript/activity/list_subscriptions.ts",
         "javascript": "javascript/activity/list_subscriptions.js",
         "java": "java/activity/ListSubscriptions.java",
         "csharp": "csharp/activity/ListSubscriptions.cs"
@@ -95,6 +104,7 @@
       ],
       "files": {
         "python": "python/activity/stream_events.py",
+        "typescript": "typescript/activity/stream_events.ts",
         "javascript": "javascript/activity/stream_events.js",
         "java": "java/activity/StreamEvents.java",
         "csharp": "csharp/activity/StreamEvents.cs"
@@ -112,6 +122,7 @@
       ],
       "files": {
         "python": "python/activity/update_subscription.py",
+        "typescript": "typescript/activity/update_subscription.ts",
         "javascript": "javascript/activity/update_subscription.js",
         "java": "java/activity/UpdateSubscription.java",
         "csharp": "csharp/activity/UpdateSubscription.cs"
@@ -129,6 +140,7 @@
       ],
       "files": {
         "python": "python/compliance/create_jobs.py",
+        "typescript": "typescript/compliance/create_jobs.ts",
         "javascript": "javascript/compliance/create_jobs.js",
         "java": "java/compliance/CreateJobs.java",
         "csharp": "csharp/compliance/CreateJobs.cs"
@@ -146,6 +158,7 @@
       ],
       "files": {
         "python": "python/compliance/download_results.py",
+        "typescript": "typescript/compliance/download_results.ts",
         "javascript": "javascript/compliance/download_results.js",
         "java": "java/compliance/DownloadResults.java",
         "csharp": "csharp/compliance/DownloadResults.cs"
@@ -163,6 +176,7 @@
       ],
       "files": {
         "python": "python/compliance/get_jobs.py",
+        "typescript": "typescript/compliance/get_jobs.ts",
         "javascript": "javascript/compliance/get_jobs.js",
         "java": "java/compliance/GetJobs.java",
         "csharp": "csharp/compliance/GetJobs.cs"
@@ -180,6 +194,7 @@
       ],
       "files": {
         "python": "python/compliance/get_jobs_by_id.py",
+        "typescript": "typescript/compliance/get_jobs_by_id.ts",
         "javascript": "javascript/compliance/get_jobs_by_id.js",
         "java": "java/compliance/GetJobsById.java",
         "csharp": "csharp/compliance/GetJobsById.cs"
@@ -197,6 +212,7 @@
       ],
       "files": {
         "python": "python/compliance/upload_ids.py",
+        "typescript": "typescript/compliance/upload_ids.ts",
         "javascript": "javascript/compliance/upload_ids.js",
         "java": "java/compliance/UploadIds.java",
         "csharp": "csharp/compliance/UploadIds.cs"
@@ -214,6 +230,7 @@
       ],
       "files": {
         "python": "python/direct_messages/get_events_by_conversation.py",
+        "typescript": "typescript/direct_messages/get_events_by_conversation.ts",
         "javascript": "javascript/direct_messages/get_events_by_conversation.js",
         "java": "java/direct_messages/GetEventsByConversation.java",
         "csharp": "csharp/direct_messages/GetEventsByConversation.cs"
@@ -231,6 +248,7 @@
       ],
       "files": {
         "python": "python/direct_messages/get_one_to_one_conversation_events.py",
+        "typescript": "typescript/direct_messages/get_one_to_one_conversation_events.ts",
         "javascript": "javascript/direct_messages/get_one_to_one_conversation_events.js",
         "java": "java/direct_messages/GetOneToOneConversationEvents.java",
         "csharp": "csharp/direct_messages/GetOneToOneConversationEvents.cs"
@@ -248,6 +266,7 @@
       ],
       "files": {
         "python": "python/direct_messages/get_user_conversation_events.py",
+        "typescript": "typescript/direct_messages/get_user_conversation_events.ts",
         "javascript": "javascript/direct_messages/get_user_conversation_events.js",
         "java": "java/direct_messages/GetUserConversationEvents.java",
         "csharp": "csharp/direct_messages/GetUserConversationEvents.cs"
@@ -265,6 +284,7 @@
       ],
       "files": {
         "python": "python/direct_messages/post_dm_to_conversation.py",
+        "typescript": "typescript/direct_messages/post_dm_to_conversation.ts",
         "javascript": "javascript/direct_messages/post_dm_to_conversation.js",
         "java": "java/direct_messages/PostDmToConversation.java",
         "csharp": "csharp/direct_messages/PostDmToConversation.cs"
@@ -282,6 +302,7 @@
       ],
       "files": {
         "python": "python/direct_messages/post_group_conversation_dm.py",
+        "typescript": "typescript/direct_messages/post_group_conversation_dm.ts",
         "javascript": "javascript/direct_messages/post_group_conversation_dm.js",
         "java": "java/direct_messages/PostGroupConversationDm.java",
         "csharp": "csharp/direct_messages/PostGroupConversationDm.cs"
@@ -299,6 +320,7 @@
       ],
       "files": {
         "python": "python/direct_messages/post_one_to_one_dm.py",
+        "typescript": "typescript/direct_messages/post_one_to_one_dm.ts",
         "javascript": "javascript/direct_messages/post_one_to_one_dm.js",
         "java": "java/direct_messages/PostOneToOneDm.java",
         "csharp": "csharp/direct_messages/PostOneToOneDm.cs"
@@ -316,6 +338,7 @@
       ],
       "files": {
         "python": "python/lists/add_member.py",
+        "typescript": "typescript/lists/add_member.ts",
         "javascript": "javascript/lists/add_member.js",
         "java": "java/lists/AddMember.java",
         "csharp": "csharp/lists/AddMember.cs",
@@ -334,6 +357,7 @@
       ],
       "files": {
         "python": "python/lists/create_list.py",
+        "typescript": "typescript/lists/create_list.ts",
         "javascript": "javascript/lists/create_list.js",
         "java": "java/lists/CreateList.java",
         "csharp": "csharp/lists/CreateList.cs"
@@ -351,6 +375,7 @@
       ],
       "files": {
         "python": "python/lists/delete_list.py",
+        "typescript": "typescript/lists/delete_list.ts",
         "javascript": "javascript/lists/delete_list.js",
         "java": "java/lists/DeleteList.java",
         "csharp": "csharp/lists/DeleteList.cs"
@@ -368,6 +393,7 @@
       ],
       "files": {
         "python": "python/lists/get_list_by_id.py",
+        "typescript": "typescript/lists/get_list_by_id.ts",
         "javascript": "javascript/lists/get_list_by_id.js",
         "java": "java/lists/GetListById.java",
         "csharp": "csharp/lists/GetListById.cs"
@@ -385,6 +411,7 @@
       ],
       "files": {
         "python": "python/lists/get_list_followers.py",
+        "typescript": "typescript/lists/get_list_followers.ts",
         "javascript": "javascript/lists/get_list_followers.js",
         "java": "java/lists/GetListFollowers.java",
         "csharp": "csharp/lists/GetListFollowers.cs"
@@ -402,6 +429,7 @@
       ],
       "files": {
         "python": "python/lists/get_list_members.py",
+        "typescript": "typescript/lists/get_list_members.ts",
         "javascript": "javascript/lists/get_list_members.js",
         "java": "java/lists/GetListMembers.java",
         "csharp": "csharp/lists/GetListMembers.cs"
@@ -419,6 +447,7 @@
       ],
       "files": {
         "python": "python/lists/get_list_posts.py",
+        "typescript": "typescript/lists/get_list_posts.ts",
         "javascript": "javascript/lists/get_list_posts.js",
         "java": "java/lists/GetListPosts.java",
         "csharp": "csharp/lists/GetListPosts.cs"
@@ -436,6 +465,7 @@
       ],
       "files": {
         "python": "python/lists/remove_member.py",
+        "typescript": "typescript/lists/remove_member.ts",
         "javascript": "javascript/lists/remove_member.js",
         "java": "java/lists/RemoveMember.java",
         "csharp": "csharp/lists/RemoveMember.cs",
@@ -454,6 +484,7 @@
       ],
       "files": {
         "python": "python/lists/update_list.py",
+        "typescript": "typescript/lists/update_list.ts",
         "javascript": "javascript/lists/update_list.js",
         "java": "java/lists/UpdateList.java",
         "csharp": "csharp/lists/UpdateList.cs"
@@ -471,6 +502,7 @@
       ],
       "files": {
         "python": "python/media/media_upload_v2.py",
+        "typescript": "typescript/media/media_upload_v2.ts",
         "javascript": "javascript/media/media_upload_v2.js",
         "java": "java/media/MediaUploadV2.java",
         "csharp": "csharp/media/MediaUploadV2.cs"
@@ -488,6 +520,7 @@
       ],
       "files": {
         "python": "python/media/upload.py",
+        "typescript": "typescript/media/upload.ts",
         "javascript": "javascript/media/upload.js",
         "java": "java/media/Upload.java",
         "csharp": "csharp/media/Upload.cs"
@@ -505,6 +538,7 @@
       ],
       "files": {
         "python": "python/posts/create_post.py",
+        "typescript": "typescript/posts/create_post.ts",
         "javascript": "javascript/posts/create_post.js",
         "java": "java/posts/CreatePost.java",
         "csharp": "csharp/posts/CreatePost.cs"
@@ -522,6 +556,7 @@
       ],
       "files": {
         "python": "python/posts/delete_post.py",
+        "typescript": "typescript/posts/delete_post.ts",
         "javascript": "javascript/posts/delete_post.js",
         "java": "java/posts/DeletePost.java",
         "csharp": "csharp/posts/DeletePost.cs"
@@ -539,6 +574,7 @@
       ],
       "files": {
         "python": "python/posts/get_liking_users.py",
+        "typescript": "typescript/posts/get_liking_users.ts",
         "javascript": "javascript/posts/get_liking_users.js",
         "java": "java/posts/GetLikingUsers.java",
         "csharp": "csharp/posts/GetLikingUsers.cs"
@@ -556,6 +592,7 @@
       ],
       "files": {
         "python": "python/posts/get_post_by_id.py",
+        "typescript": "typescript/posts/get_post_by_id.ts",
         "javascript": "javascript/posts/get_post_by_id.js",
         "java": "java/posts/GetPostById.java",
         "csharp": "csharp/posts/GetPostById.cs"
@@ -573,6 +610,7 @@
       ],
       "files": {
         "python": "python/posts/get_post_counts_all.py",
+        "typescript": "typescript/posts/get_post_counts_all.ts",
         "javascript": "javascript/posts/get_post_counts_all.js",
         "java": "java/posts/GetPostCountsAll.java",
         "csharp": "csharp/posts/GetPostCountsAll.cs"
@@ -590,6 +628,7 @@
       ],
       "files": {
         "python": "python/posts/get_post_counts_recent.py",
+        "typescript": "typescript/posts/get_post_counts_recent.ts",
         "javascript": "javascript/posts/get_post_counts_recent.js",
         "java": "java/posts/GetPostCountsRecent.java",
         "csharp": "csharp/posts/GetPostCountsRecent.cs"
@@ -607,6 +646,7 @@
       ],
       "files": {
         "python": "python/posts/get_posts_by_ids.py",
+        "typescript": "typescript/posts/get_posts_by_ids.ts",
         "javascript": "javascript/posts/get_posts_by_ids.js",
         "java": "java/posts/GetPostsByIds.java",
         "csharp": "csharp/posts/GetPostsByIds.cs"
@@ -624,6 +664,7 @@
       ],
       "files": {
         "python": "python/posts/get_quoted_posts.py",
+        "typescript": "typescript/posts/get_quoted_posts.ts",
         "javascript": "javascript/posts/get_quoted_posts.js",
         "java": "java/posts/GetQuotedPosts.java",
         "csharp": "csharp/posts/GetQuotedPosts.cs"
@@ -641,6 +682,7 @@
       ],
       "files": {
         "python": "python/posts/get_reposted_by.py",
+        "typescript": "typescript/posts/get_reposted_by.ts",
         "javascript": "javascript/posts/get_reposted_by.js",
         "java": "java/posts/GetRepostedBy.java",
         "csharp": "csharp/posts/GetRepostedBy.cs"
@@ -658,6 +700,7 @@
       ],
       "files": {
         "python": "python/posts/hide_reply.py",
+        "typescript": "typescript/posts/hide_reply.ts",
         "javascript": "javascript/posts/hide_reply.js",
         "java": "java/posts/HideReply.java",
         "csharp": "csharp/posts/HideReply.cs"
@@ -675,6 +718,7 @@
       ],
       "files": {
         "python": "python/posts/search_all.py",
+        "typescript": "typescript/posts/search_all.ts",
         "javascript": "javascript/posts/search_all.js",
         "java": "java/posts/SearchAll.java",
         "csharp": "csharp/posts/SearchAll.cs"
@@ -692,6 +736,7 @@
       ],
       "files": {
         "python": "python/posts/search_recent.py",
+        "typescript": "typescript/posts/search_recent.ts",
         "javascript": "javascript/posts/search_recent.js",
         "java": "java/posts/SearchRecent.java",
         "csharp": "csharp/posts/SearchRecent.cs",
@@ -710,6 +755,7 @@
       ],
       "files": {
         "python": "python/spaces/get_spaces_by_ids.py",
+        "typescript": "typescript/spaces/get_spaces_by_ids.ts",
         "javascript": "javascript/spaces/get_spaces_by_ids.js",
         "java": "java/spaces/GetSpacesByIds.java",
         "csharp": "csharp/spaces/GetSpacesByIds.cs"
@@ -727,6 +773,7 @@
       ],
       "files": {
         "python": "python/spaces/search_spaces.py",
+        "typescript": "typescript/spaces/search_spaces.ts",
         "javascript": "javascript/spaces/search_spaces.js",
         "java": "java/spaces/SearchSpaces.java",
         "csharp": "csharp/spaces/SearchSpaces.cs",
@@ -745,6 +792,7 @@
       ],
       "files": {
         "python": "python/streams/stream_posts_filtered.py",
+        "typescript": "typescript/streams/stream_posts_filtered.ts",
         "javascript": "javascript/streams/stream_posts_filtered.js",
         "java": "java/streams/StreamPostsFiltered.java",
         "csharp": "csharp/streams/StreamPostsFiltered.cs"
@@ -762,6 +810,7 @@
       ],
       "files": {
         "python": "python/streams/stream_posts_sample.py",
+        "typescript": "typescript/streams/stream_posts_sample.ts",
         "javascript": "javascript/streams/stream_posts_sample.js",
         "java": "java/streams/StreamPostsSample.java",
         "csharp": "csharp/streams/StreamPostsSample.cs"
@@ -779,6 +828,7 @@
       ],
       "files": {
         "python": "python/usage/get_usage.py",
+        "typescript": "typescript/usage/get_usage.ts",
         "javascript": "javascript/usage/get_usage.js",
         "java": "java/usage/GetUsage.java",
         "csharp": "csharp/usage/GetUsage.cs"
@@ -796,6 +846,7 @@
       ],
       "files": {
         "python": "python/users/block/get_blocking.py",
+        "typescript": "typescript/users/block/get_blocking.ts",
         "javascript": "javascript/users/block/get_blocking.js",
         "java": "java/users/block/GetBlocking.java",
         "csharp": "csharp/users/block/GetBlocking.cs"
@@ -813,6 +864,7 @@
       ],
       "files": {
         "python": "python/users/bookmark/create_bookmark.py",
+        "typescript": "typescript/users/bookmark/create_bookmark.ts",
         "javascript": "javascript/users/bookmark/create_bookmark.js",
         "java": "java/users/bookmark/CreateBookmark.java",
         "csharp": "csharp/users/bookmark/CreateBookmark.cs"
@@ -830,6 +882,7 @@
       ],
       "files": {
         "python": "python/users/bookmark/delete_bookmark.py",
+        "typescript": "typescript/users/bookmark/delete_bookmark.ts",
         "javascript": "javascript/users/bookmark/delete_bookmark.js",
         "java": "java/users/bookmark/DeleteBookmark.java",
         "csharp": "csharp/users/bookmark/DeleteBookmark.cs"
@@ -847,6 +900,7 @@
       ],
       "files": {
         "python": "python/users/bookmark/get_bookmarks.py",
+        "typescript": "typescript/users/bookmark/get_bookmarks.ts",
         "javascript": "javascript/users/bookmark/get_bookmarks.js",
         "java": "java/users/bookmark/GetBookmarks.java",
         "csharp": "csharp/users/bookmark/GetBookmarks.cs"
@@ -864,6 +918,7 @@
       ],
       "files": {
         "python": "python/users/follow/follow_user.py",
+        "typescript": "typescript/users/follow/follow_user.ts",
         "javascript": "javascript/users/follow/follow_user.js",
         "java": "java/users/follow/FollowUser.java",
         "csharp": "csharp/users/follow/FollowUser.cs"
@@ -881,6 +936,7 @@
       ],
       "files": {
         "python": "python/users/follow/get_followers.py",
+        "typescript": "typescript/users/follow/get_followers.ts",
         "javascript": "javascript/users/follow/get_followers.js",
         "java": "java/users/follow/GetFollowers.java",
         "csharp": "csharp/users/follow/GetFollowers.cs"
@@ -898,6 +954,7 @@
       ],
       "files": {
         "python": "python/users/follow/get_following.py",
+        "typescript": "typescript/users/follow/get_following.ts",
         "javascript": "javascript/users/follow/get_following.js",
         "java": "java/users/follow/GetFollowing.java",
         "csharp": "csharp/users/follow/GetFollowing.cs"
@@ -915,6 +972,7 @@
       ],
       "files": {
         "python": "python/users/follow/unfollow_user.py",
+        "typescript": "typescript/users/follow/unfollow_user.ts",
         "javascript": "javascript/users/follow/unfollow_user.js",
         "java": "java/users/follow/UnfollowUser.java",
         "csharp": "csharp/users/follow/UnfollowUser.cs"
@@ -932,6 +990,7 @@
       ],
       "files": {
         "python": "python/users/get_users_by_usernames.py",
+        "typescript": "typescript/users/get_users_by_usernames.ts",
         "javascript": "javascript/users/get_users_by_usernames.js",
         "java": "java/users/GetUsersByUsernames.java",
         "csharp": "csharp/users/GetUsersByUsernames.cs"
@@ -949,6 +1008,7 @@
       ],
       "files": {
         "python": "python/users/get_users_by_usernames_user_context.py",
+        "typescript": "typescript/users/get_users_by_usernames_user_context.ts",
         "javascript": "javascript/users/get_users_by_usernames_user_context.js",
         "java": "java/users/GetUsersByUsernamesUserContext.java",
         "csharp": "csharp/users/GetUsersByUsernamesUserContext.cs"
@@ -966,6 +1026,7 @@
       ],
       "files": {
         "python": "python/users/get_users_me.py",
+        "typescript": "typescript/users/get_users_me.ts",
         "javascript": "javascript/users/get_users_me.js",
         "java": "java/users/GetUsersMe.java",
         "csharp": "csharp/users/GetUsersMe.cs"
@@ -983,6 +1044,7 @@
       ],
       "files": {
         "python": "python/users/like/get_liked_posts.py",
+        "typescript": "typescript/users/like/get_liked_posts.ts",
         "javascript": "javascript/users/like/get_liked_posts.js",
         "java": "java/users/like/GetLikedPosts.java",
         "csharp": "csharp/users/like/GetLikedPosts.cs"
@@ -1000,6 +1062,7 @@
       ],
       "files": {
         "python": "python/users/like/like_post.py",
+        "typescript": "typescript/users/like/like_post.ts",
         "javascript": "javascript/users/like/like_post.js",
         "java": "java/users/like/LikePost.java",
         "csharp": "csharp/users/like/LikePost.cs"
@@ -1017,6 +1080,7 @@
       ],
       "files": {
         "python": "python/users/like/unlike_post.py",
+        "typescript": "typescript/users/like/unlike_post.ts",
         "javascript": "javascript/users/like/unlike_post.js",
         "java": "java/users/like/UnlikePost.java",
         "csharp": "csharp/users/like/UnlikePost.cs"
@@ -1034,6 +1098,7 @@
       ],
       "files": {
         "python": "python/users/lists/follow_list.py",
+        "typescript": "typescript/users/lists/follow_list.ts",
         "javascript": "javascript/users/lists/follow_list.js",
         "java": "java/users/lists/FollowList.java",
         "csharp": "csharp/users/lists/FollowList.cs"
@@ -1051,6 +1116,7 @@
       ],
       "files": {
         "python": "python/users/lists/get_followed_lists.py",
+        "typescript": "typescript/users/lists/get_followed_lists.ts",
         "javascript": "javascript/users/lists/get_followed_lists.js",
         "java": "java/users/lists/GetFollowedLists.java",
         "csharp": "csharp/users/lists/GetFollowedLists.cs"
@@ -1068,6 +1134,7 @@
       ],
       "files": {
         "python": "python/users/lists/get_list_memberships.py",
+        "typescript": "typescript/users/lists/get_list_memberships.ts",
         "javascript": "javascript/users/lists/get_list_memberships.js",
         "java": "java/users/lists/GetListMemberships.java",
         "csharp": "csharp/users/lists/GetListMemberships.cs"
@@ -1085,6 +1152,7 @@
       ],
       "files": {
         "python": "python/users/lists/get_owned_lists.py",
+        "typescript": "typescript/users/lists/get_owned_lists.ts",
         "javascript": "javascript/users/lists/get_owned_lists.js",
         "java": "java/users/lists/GetOwnedLists.java",
         "csharp": "csharp/users/lists/GetOwnedLists.cs"
@@ -1102,6 +1170,7 @@
       ],
       "files": {
         "python": "python/users/lists/get_pinned_lists.py",
+        "typescript": "typescript/users/lists/get_pinned_lists.ts",
         "javascript": "javascript/users/lists/get_pinned_lists.js",
         "java": "java/users/lists/GetPinnedLists.java",
         "csharp": "csharp/users/lists/GetPinnedLists.cs"
@@ -1119,6 +1188,7 @@
       ],
       "files": {
         "python": "python/users/lists/pin_list.py",
+        "typescript": "typescript/users/lists/pin_list.ts",
         "javascript": "javascript/users/lists/pin_list.js",
         "java": "java/users/lists/PinList.java",
         "csharp": "csharp/users/lists/PinList.cs"
@@ -1136,6 +1206,7 @@
       ],
       "files": {
         "python": "python/users/lists/unfollow_list.py",
+        "typescript": "typescript/users/lists/unfollow_list.ts",
         "javascript": "javascript/users/lists/unfollow_list.js",
         "java": "java/users/lists/UnfollowList.java",
         "csharp": "csharp/users/lists/UnfollowList.cs"
@@ -1153,6 +1224,7 @@
       ],
       "files": {
         "python": "python/users/lists/unpin_list.py",
+        "typescript": "typescript/users/lists/unpin_list.ts",
         "javascript": "javascript/users/lists/unpin_list.js",
         "java": "java/users/lists/UnpinList.java",
         "csharp": "csharp/users/lists/UnpinList.cs"
@@ -1170,6 +1242,7 @@
       ],
       "files": {
         "python": "python/users/mute/get_muting.py",
+        "typescript": "typescript/users/mute/get_muting.ts",
         "javascript": "javascript/users/mute/get_muting.js",
         "java": "java/users/mute/GetMuting.java",
         "csharp": "csharp/users/mute/GetMuting.cs"
@@ -1187,6 +1260,7 @@
       ],
       "files": {
         "python": "python/users/mute/mute_user.py",
+        "typescript": "typescript/users/mute/mute_user.ts",
         "javascript": "javascript/users/mute/mute_user.js",
         "java": "java/users/mute/MuteUser.java",
         "csharp": "csharp/users/mute/MuteUser.cs"
@@ -1204,6 +1278,7 @@
       ],
       "files": {
         "python": "python/users/mute/unmute_user.py",
+        "typescript": "typescript/users/mute/unmute_user.ts",
         "javascript": "javascript/users/mute/unmute_user.js",
         "java": "java/users/mute/UnmuteUser.java",
         "csharp": "csharp/users/mute/UnmuteUser.cs"
@@ -1221,6 +1296,7 @@
       ],
       "files": {
         "python": "python/users/repost/get_reposts_of_me.py",
+        "typescript": "typescript/users/repost/get_reposts_of_me.ts",
         "javascript": "javascript/users/repost/get_reposts_of_me.js",
         "java": "java/users/repost/GetRepostsOfMe.java",
         "csharp": "csharp/users/repost/GetRepostsOfMe.cs"
@@ -1238,6 +1314,7 @@
       ],
       "files": {
         "python": "python/users/repost/repost_post.py",
+        "typescript": "typescript/users/repost/repost_post.ts",
         "javascript": "javascript/users/repost/repost_post.js",
         "java": "java/users/repost/RepostPost.java",
         "csharp": "csharp/users/repost/RepostPost.cs"
@@ -1255,6 +1332,7 @@
       ],
       "files": {
         "python": "python/users/repost/unrepost_post.py",
+        "typescript": "typescript/users/repost/unrepost_post.ts",
         "javascript": "javascript/users/repost/unrepost_post.js",
         "java": "java/users/repost/UnrepostPost.java",
         "csharp": "csharp/users/repost/UnrepostPost.cs"
@@ -1272,6 +1350,7 @@
       ],
       "files": {
         "python": "python/users/timeline/get_home_timeline.py",
+        "typescript": "typescript/users/timeline/get_home_timeline.ts",
         "javascript": "javascript/users/timeline/get_home_timeline.js",
         "java": "java/users/timeline/GetHomeTimeline.java",
         "csharp": "csharp/users/timeline/GetHomeTimeline.cs"
@@ -1289,6 +1368,7 @@
       ],
       "files": {
         "python": "python/users/timeline/get_mentions.py",
+        "typescript": "typescript/users/timeline/get_mentions.ts",
         "javascript": "javascript/users/timeline/get_mentions.js",
         "java": "java/users/timeline/GetMentions.java",
         "csharp": "csharp/users/timeline/GetMentions.cs"
@@ -1306,6 +1386,7 @@
       ],
       "files": {
         "python": "python/users/timeline/get_posts.py",
+        "typescript": "typescript/users/timeline/get_posts.ts",
         "javascript": "javascript/users/timeline/get_posts.js",
         "java": "java/users/timeline/GetPosts.java",
         "csharp": "csharp/users/timeline/GetPosts.cs"
@@ -1323,6 +1404,7 @@
       ],
       "files": {
         "python": "python/webhooks/delete_webhook.py",
+        "typescript": "typescript/webhooks/delete_webhook.ts",
         "javascript": "javascript/webhooks/delete_webhook.js",
         "java": "java/webhooks/DeleteWebhook.java",
         "csharp": "csharp/webhooks/DeleteWebhook.cs"
@@ -1340,6 +1422,7 @@
       ],
       "files": {
         "python": "python/webhooks/list_webhooks.py",
+        "typescript": "typescript/webhooks/list_webhooks.ts",
         "javascript": "javascript/webhooks/list_webhooks.js",
         "java": "java/webhooks/ListWebhooks.java",
         "csharp": "csharp/webhooks/ListWebhooks.cs"
@@ -1357,6 +1440,7 @@
       ],
       "files": {
         "python": "python/webhooks/register_webhook.py",
+        "typescript": "typescript/webhooks/register_webhook.ts",
         "javascript": "javascript/webhooks/register_webhook.js",
         "java": "java/webhooks/RegisterWebhook.java",
         "csharp": "csharp/webhooks/RegisterWebhook.cs"
@@ -1374,6 +1458,7 @@
       ],
       "files": {
         "python": "python/webhooks/validate_webhook.py",
+        "typescript": "typescript/webhooks/validate_webhook.ts",
         "javascript": "javascript/webhooks/validate_webhook.js",
         "java": "java/webhooks/ValidateWebhook.java",
         "csharp": "csharp/webhooks/ValidateWebhook.cs"
@@ -1391,6 +1476,7 @@
       ],
       "files": {
         "python": "python/webhooks/webhook_server.py",
+        "typescript": "typescript/webhooks/webhook_server.ts",
         "javascript": "javascript/webhooks/webhook_server.js",
         "java": "java/webhooks/WebhookServer.java",
         "csharp": "csharp/webhooks/WebhookServer.cs"
