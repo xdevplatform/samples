@@ -1,64 +1,49 @@
+package posts;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.x.xdk.Paginator;
+import com.x.xdk.XClient;
+import com.x.xdk.XClientConfig;
+import com.x.xdk.clients.*;
+import com.x.xdk.models.Schemas;
+import com.x.xdk.streaming.EventStream;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Recent Search - X API v2
- * 
+ *
  * Endpoint: GET https://api.x.com/2/tweets/search/recent
  * Docs: https://developer.x.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent
- * 
+ *
  * Authentication: Bearer Token (App-only)
  * Required env vars: BEARER_TOKEN
- * 
- * Dependencies: org.apache.httpcomponents:httpclient, com.google.code.gson:gson
  */
-
-import java.io.IOException;
-import java.net.URISyntaxException;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.config.CookieSpecs;
-import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.utils.URIBuilder;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.util.EntityUtils;
-
 public class SearchRecent {
+    private static final ObjectMapper MAPPER = new ObjectMapper();
 
-    public static void main(String[] args) throws IOException, URISyntaxException {
+    public static void main(String[] args) throws Exception {
         String bearerToken = System.getenv("BEARER_TOKEN");
-        
-        if (bearerToken == null) {
-            System.err.println("BEARER_TOKEN environment variable not set");
-            System.exit(1);
+        if (bearerToken == null || bearerToken.isBlank()) {
+            throw new IllegalStateException("BEARER_TOKEN environment variable is not set");
         }
 
-        String response = search("from:XDevelopers -is:retweet", bearerToken);
-        System.out.println(response);
-    }
+        try (XClient client = new XClient(XClientConfig.builder().bearerToken(bearerToken).build())) {
+            String query = "(from:XDevelopers -is:retweet) OR #XDevelopers";
+            PostsClient.SearchRecentOptions options = PostsClient.SearchRecentOptions.builder()
+                    .maxResults(100)
+                    .postFields(Arrays.asList("author_id", "created_at"));
 
-    private static String search(String query, String bearerToken) throws IOException, URISyntaxException {
-        String searchUrl = "https://api.x.com/2/tweets/search/recent";
-
-        HttpClient httpClient = HttpClients.custom()
-                .setDefaultRequestConfig(RequestConfig.custom()
-                        .setCookieSpec(CookieSpecs.STANDARD).build())
-                .build();
-
-        URIBuilder uriBuilder = new URIBuilder(searchUrl);
-        uriBuilder.addParameter("query", query);
-        uriBuilder.addParameter("tweet.fields", "author_id,created_at");
-
-        HttpGet httpGet = new HttpGet(uriBuilder.build());
-        httpGet.setHeader("Authorization", "Bearer " + bearerToken);
-        httpGet.setHeader("User-Agent", "v2RecentSearchJava");
-
-        HttpResponse response = httpClient.execute(httpGet);
-        HttpEntity entity = response.getEntity();
-        
-        if (entity != null) {
-            return EntityUtils.toString(entity, "UTF-8");
-        } else {
-            return "No response";
+            List<Schemas.Post> allPosts = new ArrayList<>();
+            for (Schemas.SearchPostsRecentResponse page : client.posts().searchRecentPages(query, options)) {
+                if (page.getData() != null) {
+                    allPosts.addAll(page.getData());
+                    System.out.println("Fetched " + page.getData().size() + " posts (total: " + allPosts.size() + ")");
+                }
+            }
+            System.out.println("Total Posts: " + allPosts.size());
+            System.out.println(MAPPER.writerWithDefaultPrettyPrinter().writeValueAsString(allPosts.subList(0, Math.min(5, allPosts.size()))));
         }
     }
 }
